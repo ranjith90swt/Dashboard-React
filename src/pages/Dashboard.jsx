@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../components/Card'
 import ProductList from './ProductList'
 import UserList from './UserList'
+import DashboardChart from '../components/DashboardChart'
 const Dashboard = () => {
   return (
     <>
