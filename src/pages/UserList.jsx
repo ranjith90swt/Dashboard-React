@@ -1,93 +1,95 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../components/Card';
+import CommonTable from '../components/CommonTable';
 
-const UserList = () => {
+const UserList = (
+  {
+    limit = null,
+    showSearch = true,
+    showPagination = true,
+    showPageSize =true,
+    title = 'User List',
+    showItemCount = true,
+    showPageTitle= true,
+    showCardTitle= false, 
+  }
+) => {
   const [users, setUsers] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' });
   const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  
 
   useEffect(() => {
-    setIsLoading(true); 
-    fetch('https://fakestoreapi.com/users')
+    setIsLoading(true);
+    fetch('../data/user.json')
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
-        setIsLoading(false); 
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error('API error:', error);
-        setIsLoading(false); 
+        setIsLoading(false);
       });
   }, []);
 
-  const getSortArrow = (key) => {
-    if (sortConfig.key !== key) return '';
-    return sortConfig.direction === 'asc' ? '↑' : '↓';
-  };
+  
+  const filteredList = users.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  const displayUserList = limit ? filteredList.slice(0, limit) : filteredList;
 
-  const sortedUsers = [...users].sort((a, b) => {
-    if (!sortConfig.key) return 0;
 
-    const aVal = a[sortConfig.key];
-    const bVal = b[sortConfig.key];
+  const columns = [
+    { header: 'ID', accessor: 'id', sortable: true },
+    { header: 'Name', accessor: 'name', sortable: true },
+    { header: 'Email', accessor: 'email', sortable: true },
+    { header: 'Role', accessor: 'role', sortable:true },
+    { header: 'Status', accessor: 'status', sortable:true, render: (row) => (
+        <span
+          className={`btn btn-sm ${
+            row.status === 'active' ? 'btn-success' : 'btn-danger'
+          }`}
+          disabled
+        >
+          {row.status.charAt(0).toUpperCase() + row.status.slice(1)}
+        </span>
+      )
 
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return sortConfig.direction === 'asc' ? aVal - bVal : bVal - aVal;
-    }
-
-    const aStr = aVal?.toString().toLowerCase() || '';
-    const bStr = bVal?.toString().toLowerCase() || '';
-
-    if (aStr < bStr) return sortConfig.direction === 'asc' ? -1 : 1;
-    if (aStr > bStr) return sortConfig.direction === 'asc' ? 1 : -1;
-    return 0;
-  });
-
-  const handleSort = (key) => {
-    setSortConfig((prev) => ({
-      key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
-    }));
-  };
+      
+    },
+  ];
 
   return (
-    <div className=''>
-      <h5 className='mb-3'>User List</h5>
-      <table className='table table-bordered'>
-        <thead>
-          <tr>
-            <th onClick={() => handleSort('id')} >
-              ID {getSortArrow('id')}
-            </th>
-            <th onClick={() => handleSort('username')}>
-              Name {getSortArrow('username')}
-            </th>
-            <th onClick={() => handleSort('email')} >
-              Email {getSortArrow('email')}
-            </th>
-            <th>Phone</th>
-          </tr>
-        </thead>
-        <tbody>
-          {isLoading ? (
-            <tr>
-              <td colSpan="4" className="text-center">Loading...</td>
-            </tr>
-          ) : sortedUsers.length === 0 ? (
-            <tr>
-              <td colSpan="4" className="text-center">No data found.</td>
-            </tr>
-          ) : (
-            sortedUsers.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+    <div>
+      {
+        showPageTitle && (
+          <h5 className='page-title'>{title}</h5>
+        )
+      }
+      <Card 
+      
+        title={showCardTitle ? title : undefined}
+      // title={title}
+      
+      
+      >
+        <CommonTable
+          data={displayUserList}
+          columns={columns}
+          isLoading={isLoading}
+
+          searchQuery={searchTerm}
+          onSearchChange={val => setSearchTerm(val)}
+
+          enableSearch={showSearch}       
+          enablePagination={showPagination}  
+          enablePageSize={showPageSize} 
+          enableItemCount = {showItemCount}
+          placeholder='Search by name..'
+        />
+      </Card>
     </div>
   );
 };

@@ -1,0 +1,302 @@
+[
+  {
+    "id": "r001",
+    "user_id": "u001",
+    "name": "David Freelancer",
+    "email": "david@freelance.io",
+    "bank_account": {
+      "account_number": "1234567890",
+      "ifsc": "HDFC0001234",
+      "bank_name": "HDFC Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-10T12:00:00Z"
+  },
+  {
+    "id": "r002",
+    "user_id": "u002",
+    "name": "Emma Designer",
+    "email": "emma@designify.com",
+    "bank_account": {
+      "account_number": "9876543210",
+      "ifsc": "ICIC0009876",
+      "bank_name": "ICICI Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "pending",
+    "status": "active",
+    "created_at": "2025-07-12T09:30:00Z"
+  },
+  {
+    "id": "r003",
+    "user_id": "u001",
+    "name": "Charlie Consultant",
+    "email": "charlie@consultinghub.com",
+    "bank_account": {
+      "account_number": "1122334455",
+      "ifsc": "SBI0001234",
+      "bank_name": "State Bank of India",
+      "account_type": "savings"
+    },
+    "kyc_status": "rejected",
+    "status": "inactive",
+    "created_at": "2025-07-13T11:45:00Z"
+  },
+  {
+    "id": "r004",
+    "user_id": "u004",
+    "name": "Liam Developer",
+    "email": "liam@codecrew.dev",
+    "bank_account": {
+      "account_number": "3344556677",
+      "ifsc": "AXIS0001221",
+      "bank_name": "Axis Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-14T10:10:00Z"
+  },
+  {
+    "id": "r005",
+    "user_id": "u005",
+    "name": "Sophia Writer",
+    "email": "sophia@contenthub.io",
+    "bank_account": {
+      "account_number": "5566778899",
+      "ifsc": "YESB0001212",
+      "bank_name": "Yes Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "pending",
+    "status": "inactive",
+    "created_at": "2025-07-14T12:00:00Z"
+  },
+  {
+    "id": "r006",
+    "user_id": "u006",
+    "name": "Noah Engineer",
+    "email": "noah@buildertech.com",
+    "bank_account": {
+      "account_number": "6677889900",
+      "ifsc": "SBIN0002233",
+      "bank_name": "State Bank of India",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-15T08:30:00Z"
+  },
+  {
+    "id": "r007",
+    "user_id": "u007",
+    "name": "Olivia Designer",
+    "email": "olivia@creativecloud.io",
+    "bank_account": {
+      "account_number": "7788990011",
+      "ifsc": "KKBK0004455",
+      "bank_name": "Kotak Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-15T09:15:00Z"
+  },
+  {
+    "id": "r008",
+    "user_id": "u008",
+    "name": "Ethan Marketer",
+    "email": "ethan@growthwave.io",
+    "bank_account": {
+      "account_number": "8899001122",
+      "ifsc": "ICIC0003344",
+      "bank_name": "ICICI Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "pending",
+    "status": "active",
+    "created_at": "2025-07-15T10:00:00Z"
+  },
+  {
+    "id": "r009",
+    "user_id": "u009",
+    "name": "Ava Strategist",
+    "email": "ava@strategyhub.com",
+    "bank_account": {
+      "account_number": "9900112233",
+      "ifsc": "HDFC0005678",
+      "bank_name": "HDFC Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "inactive",
+    "created_at": "2025-07-16T09:45:00Z"
+  },
+  {
+    "id": "r010",
+    "user_id": "u010",
+    "name": "James Analyst",
+    "email": "james@analyticszone.com",
+    "bank_account": {
+      "account_number": "1011121314",
+      "ifsc": "PNB0008787",
+      "bank_name": "Punjab National Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-16T10:00:00Z"
+  },
+  {
+    "id": "r011",
+    "user_id": "u011",
+    "name": "Mia UX Researcher",
+    "email": "mia@userflows.io",
+    "bank_account": {
+      "account_number": "1213141516",
+      "ifsc": "IOBA0009988",
+      "bank_name": "Indian Overseas Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "pending",
+    "status": "inactive",
+    "created_at": "2025-07-16T11:00:00Z"
+  },
+  {
+    "id": "r012",
+    "user_id": "u012",
+    "name": "William Data",
+    "email": "william@datadev.io",
+    "bank_account": {
+      "account_number": "1415161718",
+      "ifsc": "IDIB0003344",
+      "bank_name": "Indian Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-17T08:00:00Z"
+  },
+  {
+    "id": "r013",
+    "user_id": "u013",
+    "name": "Isabella Content",
+    "email": "isabella@contentcraft.io",
+    "bank_account": {
+      "account_number": "1516171819",
+      "ifsc": "UBIN0001122",
+      "bank_name": "Union Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "pending",
+    "status": "active",
+    "created_at": "2025-07-17T09:00:00Z"
+  },
+  {
+    "id": "r014",
+    "user_id": "u014",
+    "name": "Logan IT",
+    "email": "logan@techtask.io",
+    "bank_account": {
+      "account_number": "1617181920",
+      "ifsc": "MAHB0005544",
+      "bank_name": "Bank of Maharashtra",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "inactive",
+    "created_at": "2025-07-17T10:30:00Z"
+  },
+  {
+    "id": "r015",
+    "user_id": "u015",
+    "name": "Chloe Researcher",
+    "email": "chloe@marketinsights.io",
+    "bank_account": {
+      "account_number": "1718192021",
+      "ifsc": "CNRB0007766",
+      "bank_name": "Canara Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "pending",
+    "status": "active",
+    "created_at": "2025-07-17T11:45:00Z"
+  },
+  {
+    "id": "r016",
+    "user_id": "u016",
+    "name": "Lucas Operations",
+    "email": "lucas@opsmaster.com",
+    "bank_account": {
+      "account_number": "1819202122",
+      "ifsc": "SBIN0003322",
+      "bank_name": "State Bank of India",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-18T09:00:00Z"
+  },
+  {
+    "id": "r017",
+    "user_id": "u017",
+    "name": "Amelia Outreach",
+    "email": "amelia@clientconnect.io",
+    "bank_account": {
+      "account_number": "1920212223",
+      "ifsc": "FDRL0002233",
+      "bank_name": "Federal Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "rejected",
+    "status": "inactive",
+    "created_at": "2025-07-18T10:00:00Z"
+  },
+  {
+    "id": "r018",
+    "user_id": "u018",
+    "name": "Benjamin Tech",
+    "email": "benjamin@devstream.io",
+    "bank_account": {
+      "account_number": "2021222324",
+      "ifsc": "BARB0IND123",
+      "bank_name": "Bank of Baroda",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "active",
+    "created_at": "2025-07-18T11:30:00Z"
+  },
+  {
+    "id": "r019",
+    "user_id": "u019",
+    "name": "Harper Growth",
+    "email": "harper@growthmint.io",
+    "bank_account": {
+      "account_number": "2122232425",
+      "ifsc": "IDFC0004455",
+      "bank_name": "IDFC Bank",
+      "account_type": "current"
+    },
+    "kyc_status": "pending",
+    "status": "active",
+    "created_at": "2025-07-18T12:00:00Z"
+  },
+  {
+    "id": "r020",
+    "user_id": "u020",
+    "name": "Ella Marketer",
+    "email": "ella@brandboost.io",
+    "bank_account": {
+      "account_number": "2223242526",
+      "ifsc": "UTIB0006677",
+      "bank_name": "Axis Bank",
+      "account_type": "savings"
+    },
+    "kyc_status": "verified",
+    "status": "inactive",
+    "created_at": "2025-07-18T12:30:00Z"
+  }
+]
