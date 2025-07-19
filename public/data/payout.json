@@ -1,0 +1,232 @@
+[
+  {
+    "id": "p001",
+    "user_id": "u001",
+    "recipients": [
+      { "recipient_id": "r001", "amount": 5000, "note": "July Payment" }
+    ],
+    "total_amount": 5000,
+    "currency": "INR",
+    "status": "pending",
+    "created_at": "2025-07-10T10:00:00Z"
+  },
+  {
+    "id": "p002",
+    "user_id": "u002",
+    "recipients": [
+      { "recipient_id": "r002", "amount": 3000, "note": "Design Services" },
+      { "recipient_id": "r003", "amount": 2000 }
+    ],
+    "total_amount": 5000,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-10T11:00:00Z"
+  },
+  {
+    "id": "p003",
+    "user_id": "u003",
+    "recipients": [
+      { "recipient_id": "r004", "amount": 7500, "note": "Dev Project" }
+    ],
+    "total_amount": 7500,
+    "currency": "INR",
+    "status": "processing",
+    "created_at": "2025-07-10T12:00:00Z"
+  },
+  {
+    "id": "p004",
+    "user_id": "u004",
+    "recipients": [
+      { "recipient_id": "r005", "amount": 2500 },
+      { "recipient_id": "r006", "amount": 3500 }
+    ],
+    "total_amount": 6000,
+    "currency": "INR",
+    "status": "failed",
+    "created_at": "2025-07-11T08:00:00Z"
+  },
+  {
+    "id": "p005",
+    "user_id": "u005",
+    "recipients": [
+      { "recipient_id": "r007", "amount": 4800 }
+    ],
+    "total_amount": 4800,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-11T09:15:00Z"
+  },
+  {
+    "id": "p006",
+    "user_id": "u006",
+    "recipients": [
+      { "recipient_id": "r008", "amount": 1000, "note": "Marketing Collab" }
+    ],
+    "total_amount": 1000,
+    "currency": "INR",
+    "status": "pending",
+    "created_at": "2025-07-11T10:45:00Z"
+  },
+  {
+    "id": "p007",
+    "user_id": "u007",
+    "recipients": [
+      { "recipient_id": "r009", "amount": 6000 },
+      { "recipient_id": "r010", "amount": 4000 }
+    ],
+    "total_amount": 10000,
+    "currency": "INR",
+    "status": "processing",
+    "created_at": "2025-07-12T08:30:00Z"
+  },
+  {
+    "id": "p008",
+    "user_id": "u008",
+    "recipients": [
+      { "recipient_id": "r011", "amount": 1500 },
+      { "recipient_id": "r012", "amount": 3500 },
+      { "recipient_id": "r013", "amount": 2500 }
+    ],
+    "total_amount": 7500,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-12T09:00:00Z"
+  },
+  {
+    "id": "p009",
+    "user_id": "u009",
+    "recipients": [
+      { "recipient_id": "r014", "amount": 4000 }
+    ],
+    "total_amount": 4000,
+    "currency": "INR",
+    "status": "failed",
+    "created_at": "2025-07-12T10:00:00Z"
+  },
+  {
+    "id": "p010",
+    "user_id": "u010",
+    "recipients": [
+      { "recipient_id": "r015", "amount": 3500 }
+    ],
+    "total_amount": 3500,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-13T10:30:00Z"
+  },
+  {
+    "id": "p011",
+    "user_id": "u011",
+    "recipients": [
+      { "recipient_id": "r016", "amount": 2200 }
+    ],
+    "total_amount": 2200,
+    "currency": "INR",
+    "status": "pending",
+    "created_at": "2025-07-13T11:00:00Z"
+  },
+  {
+    "id": "p012",
+    "user_id": "u012",
+    "recipients": [
+      { "recipient_id": "r017", "amount": 500 },
+      { "recipient_id": "r018", "amount": 1200 }
+    ],
+    "total_amount": 1700,
+    "currency": "INR",
+    "status": "processing",
+    "created_at": "2025-07-13T11:45:00Z"
+  },
+  {
+    "id": "p013",
+    "user_id": "u013",
+    "recipients": [
+      { "recipient_id": "r019", "amount": 3000 }
+    ],
+    "total_amount": 3000,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-14T08:00:00Z"
+  },
+  {
+    "id": "p014",
+    "user_id": "u014",
+    "recipients": [
+      { "recipient_id": "r020", "amount": 2750 },
+      { "recipient_id": "r001", "amount": 3250 }
+    ],
+    "total_amount": 6000,
+    "currency": "INR",
+    "status": "pending",
+    "created_at": "2025-07-14T09:30:00Z"
+  },
+  {
+    "id": "p015",
+    "user_id": "u015",
+    "recipients": [
+      { "recipient_id": "r002", "amount": 1500 }
+    ],
+    "total_amount": 1500,
+    "currency": "INR",
+    "status": "failed",
+    "created_at": "2025-07-14T10:00:00Z"
+  },
+  {
+    "id": "p016",
+    "user_id": "u016",
+    "recipients": [
+      { "recipient_id": "r003", "amount": 800 },
+      { "recipient_id": "r004", "amount": 1200 }
+    ],
+    "total_amount": 2000,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-15T09:45:00Z"
+  },
+  {
+    "id": "p017",
+    "user_id": "u017",
+    "recipients": [
+      { "recipient_id": "r005", "amount": 4000 }
+    ],
+    "total_amount": 4000,
+    "currency": "INR",
+    "status": "processing",
+    "created_at": "2025-07-15T10:15:00Z"
+  },
+  {
+    "id": "p018",
+    "user_id": "u018",
+    "recipients": [
+      { "recipient_id": "r006", "amount": 2300 },
+      { "recipient_id": "r007", "amount": 2700 }
+    ],
+    "total_amount": 5000,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-16T08:45:00Z"
+  },
+  {
+    "id": "p019",
+    "user_id": "u019",
+    "recipients": [
+      { "recipient_id": "r008", "amount": 6000 }
+    ],
+    "total_amount": 6000,
+    "currency": "INR",
+    "status": "pending",
+    "created_at": "2025-07-16T09:00:00Z"
+  },
+  {
+    "id": "p020",
+    "user_id": "u020",
+    "recipients": [
+      { "recipient_id": "r009", "amount": 3000 },
+      { "recipient_id": "r010", "amount": 2000 }
+    ],
+    "total_amount": 5000,
+    "currency": "INR",
+    "status": "completed",
+    "created_at": "2025-07-16T09:30:00Z"
+  }
+]
