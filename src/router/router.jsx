@@ -4,6 +4,7 @@ import App from '../App';
 import UserList from '../pages/UserList';
 import ProductList from '../pages/ProductList';
 import Dashboard from '../pages/Dashboard';
+import Transactions from '../pages/Transactions'
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                path:'/products',
                element: <ProductList />
+            },
+            {
+               path:'/transactions',
+               element:<Transactions/>
             }
         ]
        
