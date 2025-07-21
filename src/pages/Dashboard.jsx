@@ -20,59 +20,70 @@ const Dashboard = () => {
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Revenue"
+                value={3240}
+                prefix='$'
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Transactions"
+                value={2245}
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Amount"
+                value={3045}
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
-
+       
       </div>
+
       <DashboardChart title='Chart' />
+
 
 
       <div className="d-flex flex-row gap-4">
         <div className="w-50">
-
-          <UserList
-
-            title='Recent Users'
-            showSearch={false}
-            showPageSize={false}
-            showPagination={false}
-            showItemCount={false}
-            limit={7}
-            showCardTitle={true}
-            showPageTitle={false}
+          
+          <UserList 
+           
+           title='Recent Users'
+           showSearch={false}
+           showPageSize={false}
+           showPagination={false}
+           showItemCount={false}
+           limit={7}
+           showCardTitle={true}
+           showPageTitle={false}
           />
-
-
+          
+          
         </div>
         <div className="w-50">
-          <UserList
-
-            title='Recent Users'
-            showSearch={false}
-            showPageSize={false}
-            showPagination={false}
-            showItemCount={false}
-            limit={7}
-            showCardTitle={true}
-            showPageTitle={false}
+          <UserList 
+           
+           title='Recent Users'
+           showSearch={false}
+           showPageSize={false}
+           showPagination={false}
+           showItemCount={false}
+           limit={7}
+           showCardTitle={true}
+           showPageTitle={false}
           />
         </div>
       </div>
-
     </>
 
   )
