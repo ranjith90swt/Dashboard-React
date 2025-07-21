@@ -3,6 +3,7 @@ import Card from '../components/Card'
 import ProductList from './ProductList'
 import UserList from './UserList'
 import DashboardChart from '../components/DashboardChart'
+import { StatCard } from '../components/StatCard'
 const Dashboard = () => {
   return (
     <>
@@ -10,26 +11,39 @@ const Dashboard = () => {
 
       <div className='d-flex flex-row gap-4 mb-4'>
         <div className="w-25">
-          <Card title='Test Card'
-            description='Hi this test card'
+          <StatCard 
+               title="Total Users"
+                value={1240}
+                // icon="bi-people-fill"
+                color="primary"
           />
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Revenue"
+                value={3240}
+                prefix='$'
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Transactions"
+                value={2245}
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
 
          <div className="w-25">
-            <Card title='Test Card'
-            description = 'Hi this test card'
+            <StatCard 
+               title="Total Amount"
+                value={3045}
+                // icon="bi-people-fill"
+                color="primary"
             />
         </div>
        

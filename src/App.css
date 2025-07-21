@@ -51,7 +51,8 @@ a{
 }
 
 .btn-success, .btn-danger{
-  margin: 0; padding: 1px 4px;
+  margin: 0; padding: 1px 4px; font-size: 12px;
+  min-width: 70px;
 }
 
 .form-control{
@@ -131,6 +132,9 @@ a{
 }
 .sidebar ul li .nav-link.active{
    border-radius: 4px; color: var(--text-color);
+}
+.sidebar ul li .nav-link.active i{
+  color: var(--text-color);
 }
 .sidebar ul li .nav-link:hover{
    color: var(--text-color);

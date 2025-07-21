@@ -1,0 +1,12 @@
+.stat-bx{
+    background: var(--primary-color); width: 100%;
+    padding: 1.5rem; 
+    border-radius: var(--border-radius);
+}
+.stat-bx .state-numbers{
+    font-size: 36px; font-weight: 500; 
+    color: var(--light-gray);
+    letter-spacing: 2px;
+
+    
+}
