@@ -16,6 +16,7 @@ const Dashboard = () => {
                 value={1240}
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg1'
           />
         </div>
 
@@ -26,6 +27,7 @@ const Dashboard = () => {
                 prefix='$'
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg2'
             />
         </div>
 
@@ -35,6 +37,7 @@ const Dashboard = () => {
                 value={2245}
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg3'
             />
         </div>
 
@@ -44,6 +47,7 @@ const Dashboard = () => {
                 value={3045}
                 // icon="bi-people-fill"
                 color="primary"
+                 bgclass='stat-bg4'
             />
         </div>
        
