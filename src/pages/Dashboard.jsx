@@ -49,11 +49,16 @@ const Dashboard = () => {
        
       </div>
 
-      <DashboardChart title='Chart' />
+      <Card title="Chart">
+
+        <DashboardChart title='Chart' />
+      </Card>
+
+      
 
 
 
-      <div className="d-flex flex-row gap-4">
+      <div className="d-flex flex-row gap-4 mt-4">
         <div className="w-50">
           
           <UserList 
