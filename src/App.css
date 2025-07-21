@@ -147,13 +147,14 @@ a{
 }
 
 .main-bx{
-  padding: 1rem 1.5rem; flex: 1; max-height: 100vh; overflow-y: auto;
+  padding: 1rem 1.5rem; flex: 1; max-height: 100vh; overflow-y: auto; 
   background: var(--black) ; color: var(--text-color);
 }
 
 /** common table **/
 .table{
    background: var(--primary-color) !important; color: var(--light-gray);
+   box-sizing: border-box;
 }
 
 .table tbody tr{
