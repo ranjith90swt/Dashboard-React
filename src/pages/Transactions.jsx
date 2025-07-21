@@ -1,0 +1,113 @@
+import React, { useEffect, useState } from 'react';
+import '../css/Transactions.css';
+import Card from '../components/Card';
+import CommonTable from '../components/CommonTable';
+
+const Transactions = ({
+  limit = null,
+  showSearch = true,
+  showPagination = true,
+  showPageSize = true,
+  title = 'Transactions',
+  showItemCount = true,
+  showPageTitle = true,
+  showCardTitle = false,
+}) => {
+  const [carts, setCarts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setIsLoading(true);
+    fetch('https://dummyjson.com/carts')
+      .then((res) => res.json())
+      .then((data) => {
+        setCarts(data.carts);
+        console.log('Carts Data:', data.carts);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('API error:', error);
+        setIsLoading(false);
+      });
+  }, 100); // 100ms delay
+
+  // Optional: clear timeout on unmount
+  return () => clearTimeout(timer);
+}, []);
+
+
+  // Optional: filter by userId or total, depending on available fields
+  const filteredList = carts.filter(item =>
+    item.userId.toString().includes(searchTerm.toLowerCase())
+  );
+
+  const displayUserList = limit ? filteredList.slice(0, 10) : filteredList;
+
+ const columns = [
+  { header: 'ID', accessor: 'id', sortable: true },
+  { header: 'User ID', accessor: 'userId', sortable: true },
+  { header: 'Total', accessor: 'total', sortable: true },
+  { header: 'Discounted Total', accessor: 'discountedTotal', sortable: true },
+  {
+    header: 'No. of Products',
+    accessor: 'totalProducts',
+    sortable: true,
+    render: (row) => (
+      <span
+        style={{
+          color: row.totalProducts % 2 === 0 ? 'green' : 'red',
+          fontWeight: 'bold'
+        }}
+      >
+        {row.totalProducts}
+      </span>
+    ),
+  },
+  {
+    header: 'Total Quantity',
+    accessor: 'totalQuantity',
+    sortable: true,
+    render: (row) => {
+      return (
+        <span
+          style={{
+            color: row.totalQuantity % 2 === 0 ? 'green' : 'red',
+            fontWeight: 'bold'
+          }}
+        >
+          {row.totalQuantity}
+        </span>
+      );
+    }
+  },
+];
+
+
+
+  return (
+    <div>
+      {showPageTitle && (
+        <h5 className='page-title'>{title}</h5>
+      )}
+
+      <Card title={showCardTitle ? title : undefined}>
+        <CommonTable
+          data={displayUserList}
+          columns={columns}
+          isLoading={isLoading}
+          searchQuery={searchTerm}
+          onSearchChange={val => setSearchTerm(val)}
+          enableSearch={showSearch}
+          enablePagination={showPagination}
+          enablePageSize={showPageSize}
+          enableItemCount={showItemCount}
+          placeholder='Search by User ID...'
+        />
+      </Card>
+    </div>
+  );
+};
+
+export default Transactions;
