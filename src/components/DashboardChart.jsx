@@ -64,7 +64,6 @@ const DashboardChart = () => {
             },
             padding: {
               top: 10,
-              bottom: 10
             },
             position: 'bottom' // or 'top'
           },
