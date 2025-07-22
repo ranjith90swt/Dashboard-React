@@ -18,6 +18,7 @@
   --border-color: #e0e0e0;
   --border-radius:5px;
   --fontsize: 14px;
+  --activeColor : #2198EF;
 }
 
 :root[data-bs-theme="dark"] {
@@ -26,12 +27,14 @@
   --black: #000000;
   --light-gray: #a8b4dd;
   --border-color: #3c4049;
+  --activeColor : #2198EF;
 }
 
 
 *{
   font-family: "Inter", sans-serif;
   color: var(--light-gray);
+  box-sizing: border-box;
 }
 /** defaults **/
 a{
@@ -131,26 +134,27 @@ a{
    transition: background-color 0.1s ease;
 }
 .sidebar ul li .nav-link.active{
-   border-radius: 4px; color: var(--text-color);
+   border-radius: 4px; color: var(--activeColor);
 }
 .sidebar ul li .nav-link.active i{
-  color: var(--text-color);
+  color: var(--activeColor);
 }
-.sidebar ul li .nav-link:hover{
-   color: var(--text-color);
+.sidebar ul li .nav-link:hover, .sidebar ul li .nav-link:hover i{
+   color: var(--activeColor);
 }
 .sidebar ul li .nav-link:focus{
-  color: var(--text-color);
+  color: var(--activeColor);
 }
 
 .main-bx{
-  padding: 1rem 1.5rem; flex: 1; max-height: 100vh; overflow-y: auto;
+  padding: 1rem 1.5rem; flex: 1; max-height: 100vh; overflow-y: auto; 
   background: var(--black) ; color: var(--text-color);
 }
 
 /** common table **/
 .table{
    background: var(--primary-color) !important; color: var(--light-gray);
+   box-sizing: border-box;
 }
 
 .table tbody tr{
@@ -188,4 +192,16 @@ a{
 }
 .card-body{
   padding: 0;
+}
+
+/** buttons **/
+
+.edit-icon{
+    background: var(--black); text-align: center;
+    width: 36px; height: 36px;
+    border: none;
+    border-radius: 50%; color: #273c66;
+}
+.edit-icon i{
+  color: #375fb1; font-size: 18px;
 }

@@ -28,8 +28,13 @@ const SideNavbar = () => {
             </div>
           )}
         </div>
-        <h6 className='page-subtitle mb-3 mt-3'>Pages</h6>
-        <ul className='list-unstlyed'>
+       { 
+        isExpanded && (
+         <h6 className='page-subtitle mb-3 mt-3'>Pages</h6>
+        )
+       }
+    
+        <ul className='list-unstlyed mt-2'>
           <li>
             <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-ui-checks-grid me-2"></i>  {isExpanded && 'Dashboard'}
             </NavLink>
@@ -39,7 +44,7 @@ const SideNavbar = () => {
            */}
           <li><NavLink to="/users" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-person-lines-fill me-2"></i>  {isExpanded && 'User Lists'}</NavLink></li>
           <li><NavLink to="/products" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-list-task me-2"></i>  {isExpanded && 'Products'}</NavLink></li>
-          <li><NavLink to="/transactions" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-cash"></i>  {isExpanded && 'Transactions'}</NavLink></li>
+          <li><NavLink to="/transactions" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-cash me-2"></i>  {isExpanded && 'Transactions'}</NavLink></li>
 
         </ul>
       </div>

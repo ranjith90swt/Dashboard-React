@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import CommonTable from '../components/CommonTable';
+import ViewModal from '../components/ViewModal';
 
 const UserList = (
   {
@@ -17,6 +18,8 @@ const UserList = (
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showViewModal, setShowViewModal] = useState(false);
   
 
   useEffect(() => {
@@ -59,6 +62,20 @@ const UserList = (
 
       
     },
+    {
+      header:"Action",
+      accessor:'action',
+      render: (row) => (
+        <button className='edit-icon'
+         onClick={() =>{
+          setSelectedUser(row);
+          setShowViewModal(true);
+         }}
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+      )
+    }
   ];
 
   return (
@@ -88,6 +105,15 @@ const UserList = (
           enablePageSize={showPageSize} 
           enableItemCount = {showItemCount}
           placeholder='Search by name..'
+        />
+
+        <ViewModal 
+           isOpen={showViewModal}
+           onClose={() => {setShowViewModal(false)}}
+           title='User Details'
+           data={selectedUser}
+           exculudeFields={['password', 'created_at']}
+          footerShow ={false}
         />
       </Card>
     </div>

@@ -9,57 +9,65 @@ const Dashboard = () => {
     <>
       <h2 className='page-title'>Dashboard</h2>
 
-      <div className='d-flex flex-row gap-4 mb-4'>
-        <div className="w-25">
+      <div className='row g-3 mb-4'>
+        <div className="col-md-6 col-lg-3 col-sm-6">
           <StatCard 
                title="Total Users"
                 value={1240}
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg1'
           />
         </div>
 
-         <div className="w-25">
+         <div className="col-md-6 col-lg-3 col-sm-6">
             <StatCard 
                title="Total Revenue"
                 value={3240}
                 prefix='$'
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg2'
             />
         </div>
 
-         <div className="w-25">
+         <div className="col-md-6 col-lg-3 col-sm-6">
             <StatCard 
                title="Total Transactions"
                 value={2245}
                 // icon="bi-people-fill"
                 color="primary"
+                bgclass='stat-bg3'
             />
         </div>
 
-         <div className="w-25">
+         <div className="col-md-6 col-lg-3 col-sm-6">
             <StatCard 
                title="Total Amount"
                 value={3045}
                 // icon="bi-people-fill"
                 color="primary"
+                 bgclass='stat-bg4'
             />
         </div>
        
       </div>
 
-      <Card title="Chart">
+      <div className="row g-3">
+        <div className="col-lg-12">
+          <Card title="Chart">
+            <DashboardChart title='Chart' />
+          </Card>
+        </div>
+      </div>
 
-        <DashboardChart title='Chart' />
-      </Card>
 
       
 
 
 
-      <div className="d-flex flex-row gap-4 mt-4">
-        <div className="w-50">
+      <div className="row g-3 mt-2">
+        <div className="col-lg-6">
           
           <UserList 
            
@@ -75,7 +83,7 @@ const Dashboard = () => {
           
           
         </div>
-        <div className="w-50">
+        <div className="col-lg-6">
           <UserList 
            
            title='Recent Users'
@@ -89,6 +97,8 @@ const Dashboard = () => {
           />
         </div>
       </div>
+
+     
     </>
 
   )

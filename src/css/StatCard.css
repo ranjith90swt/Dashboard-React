@@ -1,12 +1,50 @@
 .stat-bx{
-    background: var(--primary-color); width: 100%;
+    background: var(--primary-color); 
+    width: 100%;
     padding: 1.5rem; 
     border-radius: var(--border-radius);
+     position: relative;   color: var(--text-color);
+     overflow: hidden;
+     transform: scale(1); transition: 0.5s;
+}
+.stat-bx:hover{
+    transform: scale(1.03);
 }
 .stat-bx .state-numbers{
     font-size: 36px; font-weight: 500; 
-    color: var(--light-gray);
+    color: var(--text-color) !important;
     letter-spacing: 2px;
-
+  
     
+}
+
+.stat-bx::before{
+    content: '';
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    width: 100%;
+    background: url(../assets/stat-bg.png); 
+    background-repeat: no-repeat;
+    background-position: right ; opacity: 0.4;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7460%) hue-rotate(102deg) brightness(99%) contrast(99%);
+}
+
+.stat-bg1{
+    background: linear-gradient(45deg, #0259d1 30%, #12BFE9)
+}
+.stat-bg2{
+    background: linear-gradient(45deg, rgb(174, 40, 245) 30%, rgb(233, 153, 255));
+    backdrop-filter: blur(20px);
+    
+}
+
+.stat-bg3{
+    background: linear-gradient(45deg, #C92D8D 30%, #F38C82);
+}
+.stat-bg4{
+    background: linear-gradient(45deg, #047d70 30%, #02AB99);
+}
+
+.stat-bx p, .stat-bx p i, .stat-bx span{
+    color: var(--text-color);
 }
