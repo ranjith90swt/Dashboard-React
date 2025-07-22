@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../css/Transactions.css';
 import Card from '../components/Card';
 import CommonTable from '../components/CommonTable';
+import EditModal from '../components/EditModal';
+import ViewModal from '../components/ViewModal';
 
 const Transactions = ({
   limit = null,
@@ -16,6 +18,8 @@ const Transactions = ({
   const [carts, setCarts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+   const [selectedUser, setSelectedUser] = useState(null);
+    const [showViewModal, setShowViewModal] = useState(false);
 
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -38,7 +42,6 @@ useEffect(() => {
 }, []);
 
 
-  // Optional: filter by userId or total, depending on available fields
   const filteredList = carts.filter(item =>
     item.userId.toString().includes(searchTerm.toLowerCase())
   );
@@ -48,7 +51,7 @@ useEffect(() => {
  const columns = [
   { header: 'ID', accessor: 'id', sortable: true },
   { header: 'User ID', accessor: 'userId', sortable: true },
-  { header: 'Total', accessor: 'total', sortable: true },
+  { header: 'Total', accessor: 'total', sortable: true, },
   { header: 'Discounted Total', accessor: 'discountedTotal', sortable: true },
   {
     header: 'No. of Products',
@@ -67,7 +70,7 @@ useEffect(() => {
   },
   {
     header: 'Total Quantity',
-    accessor: 'totalQuantity',
+    accessor: 'quantity',
     sortable: true,
     render: (row) => {
       return (
@@ -82,6 +85,26 @@ useEffect(() => {
       );
     }
   },
+  // {
+  //   header:'Quantity',
+  //   accessor:'quantity',
+  //   sortable:'true'
+  // },
+  {
+    header:'Action',
+    accessor:'action',
+      render: (row) => (
+        <button className='edit-icon'
+         onClick={() =>{
+          setSelectedUser(row);
+          setShowViewModal(true);
+         }}
+        >
+         <i className="bi bi-pencil-square"></i>
+        </button>
+      )
+  },
+  
 ];
 
 
@@ -106,6 +129,15 @@ useEffect(() => {
           placeholder='Search by User ID...'
         />
       </Card>
+       <EditModal
+          isOpen={showViewModal}
+           onClose={() => {setShowViewModal(false)}}
+           title='Transaction Details'
+           data={selectedUser}
+          //  exculudeFields={['', 'created_at']}
+          footerShow ={true}
+        />
+     
     </div>
   );
 };
