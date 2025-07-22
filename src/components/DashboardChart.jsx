@@ -15,16 +15,20 @@ const DashboardChart = () => {
     const labels = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May',
       'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
-      'Nov', 'Dec', 'Week 1', 'Week 2', 'Week 3',
-      'Week 4', 'Q1', 'Q2', 'Q3', 'Q4'
+      'Nov', 'Dec'
     ];
 
     const dataValues = [
       1200, 1500, 1800, 1300, 1600,
       1700, 1400, 1900, 2000, 1700,
-      1800, 2100, 1100, 1500, 1600,
-      1700, 5000, 5400, 5200, 6000
+      1800, 2100
     ];
+
+    // bar background color Purple to Pink Gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(0, 150, 136, 0.9)');
+    gradient.addColorStop(1, 'rgba(205, 220, 57, 0.4)');
+
 
     const chart = new window.Chart(ctx, {
       type: 'bar',
@@ -34,9 +38,9 @@ const DashboardChart = () => {
           {
             label: 'Performance',
             data: dataValues,
-            backgroundColor: 'rgba(75, 192, 192, 0.7)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
+            backgroundColor: gradient,
+            borderWidth: 0,
+            barThickness: 40
           }
         ]
       },
@@ -44,22 +48,52 @@ const DashboardChart = () => {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
+          tooltip: {
+            backgroundColor: '#000',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 10,
+            cornerRadius: 8
+          },
           title: {
             display: true,
-            text: 'Performance Overview (20 Data Points)'
+            text: 'Performance Overview (12 Data Points)',
+            color: '#555',
+            font: {
+              size: 14,
+            },
+            padding: {
+              top: 10,
+              bottom: 10
+            },
+            position: 'bottom' // or 'top'
           },
+
           legend: {
-            position: 'top'
+            position: 'bottom',
+            labels: {
+              color: '#555',
+              font: {
+                size: 14
+              }
+            }
           }
+
         },
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            grid: {
+              display: false
+            }
           },
           x: {
             ticks: {
               maxRotation: 60,
               minRotation: 45
+            },
+            grid :{
+              display:false
             }
           }
         }
@@ -75,7 +109,6 @@ const DashboardChart = () => {
     <div
       style={{
         width: '100%',
-      
         height: '400px',
         padding: '1rem'
       }}
