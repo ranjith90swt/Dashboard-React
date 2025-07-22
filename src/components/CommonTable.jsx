@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import InputField from './InputField';
 
 const CommonTable = ({
   columns = [],
@@ -87,12 +88,13 @@ const CommonTable = ({
       {(enableSearch || enablePageSize) && (
         <div className="mb-3 d-flex justify-content-between align-items-center">
           {enableSearch && (
-            <input
-              type="text"
-              className="form-control w-25"
+            <InputField 
+              type='text' 
+              className='w-25'  
               placeholder={placeholder}
               value={searchQuery}
-              onChange={(e) => onSearchChange?.(e.target.value)}
+              onChange={(e) => onSearchChange?.(e.target.value)} 
+              
             />
           )}
 

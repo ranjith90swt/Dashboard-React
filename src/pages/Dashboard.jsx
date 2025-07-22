@@ -1,56 +1,55 @@
 import React from 'react'
 import Card from '../components/Card'
-import ProductList from './ProductList'
+import Transactions from './Transactions'
 import UserList from './UserList'
 import DashboardChart from '../components/DashboardChart'
 import { StatCard } from '../components/StatCard'
 const Dashboard = () => {
+
+  const stats = [
+  {
+    title: "Total Users",
+    value: 1240,
+    color: "primary",
+    bgclass: "stat-bg1"
+  },
+  {
+    title: "Total Revenue",
+    value: 3240,
+    prefix: "$",
+    color: "primary",
+    bgclass: "stat-bg2"
+  },
+  {
+    title: "Total Transactions",
+    value: 2245,
+    color: "primary",
+    bgclass: "stat-bg3"
+  },
+  {
+    title: "Total Amount",
+    value: 3045,
+    color: "primary",
+    bgclass: "stat-bg4"
+  }
+]
+
   return (
     <>
       <h2 className='page-title'>Dashboard</h2>
 
       <div className='row g-3 mb-4'>
-        <div className="col-md-6 col-lg-3 col-sm-6">
-          <StatCard 
-               title="Total Users"
-                value={1240}
-                // icon="bi-people-fill"
-                color="primary"
-                bgclass='stat-bg1'
-          />
-        </div>
-
-         <div className="col-md-6 col-lg-3 col-sm-6">
+        {stats.map((stat, index) => (
+          <div key={index} className="col-md-6 col-lg-3 col-sm-6">
             <StatCard 
-               title="Total Revenue"
-                value={3240}
-                prefix='$'
-                // icon="bi-people-fill"
-                color="primary"
-                bgclass='stat-bg2'
+              title={stat.title}
+              value={stat.value}
+              prefix={stat.prefix}
+              color={stat.color}
+              bgclass={stat.bgclass}
             />
-        </div>
-
-         <div className="col-md-6 col-lg-3 col-sm-6">
-            <StatCard 
-               title="Total Transactions"
-                value={2245}
-                // icon="bi-people-fill"
-                color="primary"
-                bgclass='stat-bg3'
-            />
-        </div>
-
-         <div className="col-md-6 col-lg-3 col-sm-6">
-            <StatCard 
-               title="Total Amount"
-                value={3045}
-                // icon="bi-people-fill"
-                color="primary"
-                 bgclass='stat-bg4'
-            />
-        </div>
-       
+          </div>
+        ))}
       </div>
 
       <div className="row g-3">
@@ -79,6 +78,7 @@ const Dashboard = () => {
            limit={7}
            showCardTitle={true}
            showPageTitle={false}
+           showAddButton = {false}
           />
           
           
@@ -94,6 +94,7 @@ const Dashboard = () => {
            limit={7}
            showCardTitle={true}
            showPageTitle={false}
+           showAddButton = {false}
           />
         </div>
       </div>

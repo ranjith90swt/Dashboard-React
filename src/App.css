@@ -43,8 +43,8 @@ a{
 }
 
 .page-title{
-  color: var(--text-color); font-size: 1.4rem;
-  padding: 0 0 1.5rem 0; margin: 0;
+  color: var(--light-gray); font-size: 1.2rem; letter-spacing: 1px;
+  padding: 0 0 0 0; margin-bottom: 16px;
 }
 .page-subtitle{
   color: var(--light-gray);
@@ -53,10 +53,7 @@ a{
   color: var(--light-gray); font-size: 14px;
 }
 
-.btn-success, .btn-danger{
-  margin: 0; padding: 1px 4px; font-size: 12px;
-  min-width: 70px;
-}
+
 
 .form-control{
   box-shadow: none !important; background: transparent;
@@ -170,14 +167,6 @@ a{
 }
 
 
-/** top nav bar **/
-
-.top-navbar{
-  padding: 0.25rem 0.5rem; 
-}
-.mode-btn{
-  background: var(--primary-color); width: 42px; height: 42px; border-radius: 50%; border: var(--border-color) 1px solid;
-}
 
 /** card **/
 .card{
@@ -195,13 +184,40 @@ a{
 }
 
 /** buttons **/
-
+.btn-success, .btn-danger{
+  margin: 0; padding: 2px 4px; font-size: 13px;
+  min-width: 70px;
+}
 .edit-icon{
     background: var(--black); text-align: center;
-    width: 36px; height: 36px;
+    padding: 1px 10px;
     border: none;
-    border-radius: 50%; color: #273c66;
+    border-radius: 5px; color: #273c66;
 }
 .edit-icon i{
-  color: #375fb1; font-size: 18px;
+  color: #375fb1; font-size: 16px;
+}
+
+.btn-primary {
+  position: relative;
+  border: none;
+  color: #fff;
+  padding: 8px 24px;
+  background: linear-gradient(95deg, #0259d1 35%, #023d89);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(215deg, #0259d1 35%, #023d89);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0.1s; /* delay added here */
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
 }

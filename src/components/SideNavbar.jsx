@@ -8,6 +8,13 @@ const SideNavbar = () => {
     setIsExpanded(prev => !prev);
   };
 
+  const navItems = [
+    { to: '/', label: 'Dashboard', icon: 'bi bi-ui-checks-grid' },
+    { to: '/users', label: 'User Lists', icon: 'bi bi-person-lines-fill' },
+    { to: '/products', label: 'Products', icon: 'bi bi-list-task' },
+    { to: '/transactions', label: 'Transactions', icon: 'bi bi-cash' }
+  ];
+
 
   return (
     <>
@@ -33,20 +40,20 @@ const SideNavbar = () => {
          <h6 className='page-subtitle mb-3 mt-3'>Pages</h6>
         )
        }
-    
-        <ul className='list-unstlyed mt-2'>
-          <li>
-            <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-ui-checks-grid me-2"></i>  {isExpanded && 'Dashboard'}
-            </NavLink>
-          </li>
-          {/* <li><NavLink to="" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-speedometer2 me-2"></i>  {isExpanded && 'Transactions'}</NavLink></li>
-          <li><NavLink to="" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-speedometer2 me-2"></i>  {isExpanded && 'Category'}</NavLink></li>
-           */}
-          <li><NavLink to="/users" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-person-lines-fill me-2"></i>  {isExpanded && 'User Lists'}</NavLink></li>
-          <li><NavLink to="/products" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-list-task me-2"></i>  {isExpanded && 'Products'}</NavLink></li>
-          <li><NavLink to="/transactions" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}> <i class="bi bi-cash me-2"></i>  {isExpanded && 'Transactions'}</NavLink></li>
 
+        <ul className="nav flex-column">
+          {navItems.map(({ to, label, icon }, index) => (
+            <li key={index}>
+              <NavLink 
+                to={to} 
+                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+              >
+                <i className={`${icon} me-2`}></i> {isExpanded && label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
+
       </div>
     </>
   )

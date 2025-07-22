@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import CommonTable from '../components/CommonTable';
 import ViewModal from '../components/ViewModal';
@@ -13,6 +13,7 @@ const UserList = (
     showItemCount = true,
     showPageTitle= true,
     showCardTitle= false, 
+    showAddButton = true,
   }
 ) => {
   const [users, setUsers] = useState([]);
@@ -79,12 +80,28 @@ const UserList = (
   ];
 
   return (
-    <div>
-      {
-        showPageTitle && (
-          <h5 className='page-title'>{title}</h5>
-        )
-      }
+    <>
+      <div className="d-flex justify-content-between align-items-center">
+           {
+              showPageTitle && (
+                <h5 className='page-title'>{title}</h5>
+              )
+            }
+
+            {
+            showAddButton && (
+              <button className='btn btn-primary mb-2'>Add New </button>
+            )
+           }
+        {/* <div className="col-lg-6">
+            
+        </div>
+        <div className="col-lg-6 d-flex justify-content-end">
+           
+        </div> */}
+      </div>
+
+     
       <Card 
       
         title={showCardTitle ? title : undefined}
@@ -116,7 +133,7 @@ const UserList = (
           footerShow ={false}
         />
       </Card>
-    </div>
+    </>
   );
 };
 
