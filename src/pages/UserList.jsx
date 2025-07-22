@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import CommonTable from '../components/CommonTable';
 import ViewModal from '../components/ViewModal';
+import CommonModal from '../components/CommonModal';
+import InputField from '../components/InputField';
 
 const UserList = (
   {
@@ -21,6 +23,8 @@ const UserList = (
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showViewModal, setShowViewModal] = useState(false);
+
+  const [showAddModal, setShowAddModal] = useState(false)
   
 
   useEffect(() => {
@@ -42,7 +46,8 @@ const UserList = (
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
-  const displayUserList = limit ? filteredList.slice(0, limit) : filteredList;
+  const displayUserList = limit ? filteredList.slice(0, limit) : filteredList
+
 
 
   const columns = [
@@ -79,6 +84,15 @@ const UserList = (
     }
   ];
 
+  const handleAddModal = () => {
+    setShowAddModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowAddModal(false);
+  }
+
+
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
@@ -90,7 +104,7 @@ const UserList = (
 
             {
             showAddButton && (
-              <button className='btn btn-primary mb-2'>Add New </button>
+              <button className='btn btn-primary mb-2' onClick={handleAddModal}>Add New </button>
             )
            }
         {/* <div className="col-lg-6">
@@ -132,6 +146,43 @@ const UserList = (
            exculudeFields={['password', 'created_at']}
           footerShow ={false}
         />
+
+        <CommonModal 
+          id='addUserModal'
+          isOpen={showAddModal}
+          onClose={handleCloseModal}
+          title="Add New User"
+          footer={
+            <>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                
+              >
+                Save
+              </button>
+            </>
+          }
+        >
+
+
+          <form>
+
+            <InputField text='text' className='mb-3' placeholder='Enter user name'/>
+            
+            <InputField text='text' className='mb-3' placeholder='Enter email'/>
+
+          </form>
+
+
+        </CommonModal>
       </Card>
     </>
   );
