@@ -22,23 +22,28 @@ const Transactions = ({
     const [showViewModal, setShowViewModal] = useState(false);
 
 useEffect(() => {
-  const timer = setTimeout(() => {
-    setIsLoading(true);
-    fetch('https://dummyjson.com/carts')
-      .then((res) => res.json())
-      .then((data) => {
-        setCarts(data.carts);
-        console.log('Carts Data:', data.carts);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('API error:', error);
-        setIsLoading(false);
-      });
-  }, 100); // 100ms delay
+  const savedCarts = sessionStorage.getItem('cartsData');
 
-  // Optional: clear timeout on unmount
-  return () => clearTimeout(timer);
+  if (savedCarts) {
+    setCarts(JSON.parse(savedCarts));
+  } else {
+    const timer = setTimeout(() => {
+      setIsLoading(true);
+      fetch('https://dummyjson.com/carts')
+        .then((res) => res.json())
+        .then((data) => {
+          setCarts(data.carts);
+          sessionStorage.setItem('cartsData', JSON.stringify(data.carts));
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error('API error:', error);
+          setIsLoading(false);
+        });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }
 }, []);
 
 
