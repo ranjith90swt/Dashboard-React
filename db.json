@@ -1,0 +1,206 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice",
+      "email": "alice@example.com",
+      "role": "Admin",
+      "status": "active"
+    },
+    {
+      "id": "2",
+      "name": "Bob",
+      "email": "bob@example.com",
+      "role": "User",
+      "status": "inactive"
+    },
+    {
+      "id": "3",
+      "name": "Test",
+      "email": "ranjith@creativeeyetech.com",
+      "role": "Analyst",
+      "status": "active"
+    },
+    {
+      "id": "u001",
+      "name": "Alice Fintech",
+      "email": "alice@fintech.com",
+      "password": "$2b$10$7yEkJtH8zW4Bd1NqXc3Zje3nJcuyrtnwG3U1zkD2VcvE4IxrXq8qO",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-10T08:00:00Z"
+    },
+    {
+      "id": "u002",
+      "name": "Bob Corp",
+      "email": "bob@bobcorp.io",
+      "password": "$2b$10$ZzXvMI7ReoM8wT3yDhhdU.T3bVR5Rwvx2UGOUXZwAoxzFBxRYXqfK",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-11T09:15:00Z"
+    },
+    {
+      "id": "u003",
+      "name": "Admin User",
+      "email": "admin@payouts.io",
+      "password": "$2b$10$UpPyICo7vqO5VKMwTqY7w.2e6gk5LxUtgNczIj23P3QvIR6W8pVuO",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2025-07-01T12:30:00Z"
+    },
+    {
+      "id": "u004",
+      "name": "Carol Freelancer",
+      "email": "carol@freelance.me",
+      "password": "$2b$10$F9oKu1R0PxA7x5J5oNk/DOmGvlhUuKlBnGHBFzYQzQr6KOuUvjcsW",
+      "role": "recipient",
+      "status": "inactive",
+      "created_at": "2025-07-15T10:00:00Z"
+    },
+    {
+      "id": "u005",
+      "name": "Daniel Ledger",
+      "email": "daniel@ledgersync.com",
+      "password": "$2b$10$2Am1xd8Z7UtV2FzG5xpDveEpo2OZt6aPkKsKmkfeMprqZt9xvmG3O",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-02T10:00:00Z"
+    },
+    {
+      "id": "u006",
+      "name": "Ella Money",
+      "email": "ella@moneywise.org",
+      "password": "$2b$10$QkdfgwqkLW9pG5aUk7Ojpug0Mze3N/vtwZuLpWUYl3y8uV84PQl9O",
+      "role": "recipient",
+      "status": "active",
+      "created_at": "2025-07-03T08:45:00Z"
+    },
+    {
+      "id": "u007",
+      "name": "Frank Admin",
+      "email": "frank@adminhub.io",
+      "password": "$2b$10$GqKwKzU6rRMh3xBo1u4Ehe7AZe/ZDpDBg9NCh7J2zK8Oejh9KFSZe",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2025-07-03T10:30:00Z"
+    },
+    {
+      "id": "u008",
+      "name": "Grace Wallet",
+      "email": "grace@walletup.com",
+      "password": "$2b$10$3aQtvnnszKNBzAzL7Pg78OipX92rQKl9VvD6ZgLgU2MKtQwq03Et6",
+      "role": "recipient",
+      "status": "inactive",
+      "created_at": "2025-07-04T11:00:00Z"
+    },
+    {
+      "id": "u009",
+      "name": "Henry Biz",
+      "email": "henry@bizworks.ai",
+      "password": "$2b$10$Kj3F9cxGwGfpMYRzJu6bhu8Nv3l90kPogZzIa0OVZwR25ZlMYG15y",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-05T09:30:00Z"
+    },
+    {
+      "id": "u010",
+      "name": "Ivy Coins",
+      "email": "ivy@coinguru.io",
+      "password": "$2b$10$WfR0GqXuV5kZjWfRG4sRaeuAYzDCx/ZvV5TXaUvE2xwG7Ulymuqva",
+      "role": "recipient",
+      "status": "active",
+      "created_at": "2025-07-05T10:00:00Z"
+    },
+    {
+      "id": "u011",
+      "name": "Jack Partner",
+      "email": "jack@partnerhub.com",
+      "password": "$2b$10$8oHuUsZN8ZfoHsb0zTDnUeD0TwNqjz3cYYG6n0PjxrxPIhqaPIafq",
+      "role": "business",
+      "status": "inactive",
+      "created_at": "2025-07-06T08:00:00Z"
+    },
+    {
+      "id": "u012",
+      "name": "Kate Merchant",
+      "email": "kate@merchplace.io",
+      "password": "$2b$10$9LbDjiywU0Ht8h3WurKOg.x8TldEslfQl5PphvXsRViGIk98MvlzC",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-06T11:15:00Z"
+    },
+    {
+      "id": "u013",
+      "name": "Leo Vendor",
+      "email": "leo@vendx.io",
+      "password": "$2b$10$Ewzv1QaxNGeE1pDAsOYX3.5kqpF0uRWf9q7C7VWxjil2tXVqLGjVm",
+      "role": "recipient",
+      "status": "inactive",
+      "created_at": "2025-07-07T09:45:00Z"
+    },
+    {
+      "id": "u014",
+      "name": "Mia Admin",
+      "email": "mia@payoutops.com",
+      "password": "$2b$10$TUsWjR1Fv89J9T3e4SkDeuhgMvzRbR2o3D1IuQHxHvZTtB7Jg02ge",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2025-07-07T10:00:00Z"
+    },
+    {
+      "id": "u015",
+      "name": "Nathan Flow",
+      "email": "nathan@flowpay.net",
+      "password": "$2b$10$YfRGf6W6qV6zZh9w9Hk5xOgk9RQ/zKQlz5TGK0Pb3/V1e3tFknuFq",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-08T08:30:00Z"
+    },
+    {
+      "id": "u016",
+      "name": "Olivia Receive",
+      "email": "olivia@receivehub.org",
+      "password": "$2b$10$kK9bV4UlG/f1PKK5nbhYuehrZjyZrE5wDv1K7VDCkz9ZD7y9TCU9a",
+      "role": "recipient",
+      "status": "inactive",
+      "created_at": "2025-07-08T09:15:00Z"
+    },
+    {
+      "id": "u017",
+      "name": "Paul Treasury",
+      "email": "paul@treasuryapp.com",
+      "password": "$2b$10$hLcs3M5nK2TddGwDj7xH7OElHtv3PgfF7h1Vr1cs5RgF/RVrdH72y",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2025-07-08T12:00:00Z"
+    },
+    {
+      "id": "u018",
+      "name": "Quinn Payee",
+      "email": "quinn@payeezone.io",
+      "password": "$2b$10$hGq1TF3uV82XR5BtFEvSmu2LUnE8sZJikf7uvX09YXrjqPzTHdxZq",
+      "role": "recipient",
+      "status": "active",
+      "created_at": "2025-07-09T10:30:00Z"
+    },
+    {
+      "id": "u019",
+      "name": "Rita Cloud",
+      "email": "rita@cloudbiz.com",
+      "password": "$2b$10$wXlNpt7R1Q3MdbRn2PnGLe5vw5QX/6pNVGL/vYK9eG9Q1f6hdVqXS",
+      "role": "business",
+      "status": "active",
+      "created_at": "2025-07-09T11:15:00Z"
+    },
+    {
+      "id": "u020",
+      "name": "Sam Receiver",
+      "email": "sam@receiveme.io",
+      "password": "$2b$10$pCKFQ0S1YtsbGWD5Fzcn4OaL3lgYrmAcRYdnQ92NLQqg0Gi4gZtWi",
+      "role": "recipient",
+      "status": "inactive",
+      "created_at": "2025-07-10T09:00:00Z"
+    }
+
+]
+}

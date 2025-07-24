@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Card = ({ title, description, children }) => {
+const Card = ({ title, description, children, extraClass = ''}) => {
   return (
     <> 
-        <div className="card d-flex flex-column">
+        <div className={`card d-flex flex-column ${extraClass}`}>
             <div className="card-header">
                 <h2 className="card-title">{title}</h2>
             </div>

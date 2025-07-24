@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
@@ -62,7 +62,15 @@ const Loginpage = () => {
                 <div className="container text-center ">
                     <div className="row login-input">
                         <div className="col-md-6 ">
-                            <Card title="Sign in">
+                            <Card title="Login">
+
+                                {/* <div className="col-md-6 text-center login-image">
+                <img
+                  src={pattern}
+                  alt="No file is available"
+                  className="img-fluid"
+                />
+              </div> */}
                                 <div className="form-floating mb-3">
                                     <InputField
                                         type="text"
@@ -104,13 +112,7 @@ const Loginpage = () => {
                                  <span className="text-danger small-text">{errors.password}</span>
                                 )}
                                 <div className="d-flex justify-content-center align-items-center mt-3">
-                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Signin</button>
-                                </div>
-                                <span>or</span>
-                                <div className="account-creation">
-                                    <span className="text-center ">
-                                        <NavLink to='/signup' className='account'> Create account  </NavLink>
-                                    </span>
+                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
                                 </div>
                             </Card>
                         </div>
