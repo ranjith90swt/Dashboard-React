@@ -55,3 +55,11 @@
   font-size: 1rem;
   color: white;
   }
+  .view-password{
+    position: absolute;
+    display: block; right: 1rem; top: 1rem;
+ 
+    /* margin-left: 5rem; */
+    justify-self: flex-end;
+    cursor: pointer;
+  }
