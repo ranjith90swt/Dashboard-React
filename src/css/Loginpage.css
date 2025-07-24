@@ -63,3 +63,10 @@
     justify-self: flex-end;
     cursor: pointer;
   }
+  .account{
+    cursor: pointer;
+    color: rgb(109, 109, 187);
+  }
+.account:hover{
+    color: white;
+}

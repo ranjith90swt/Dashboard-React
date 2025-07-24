@@ -6,12 +6,18 @@ import ProductList from '../pages/ProductList';
 import Dashboard from '../pages/Dashboard';
 import Transactions from '../pages/Transactions'
 import Loginpage from '../pages/Loginpage';
+import Signup from '../pages/Signup';
 
 
 const router = createBrowserRouter([
    {
       path: '/',
       element: <Loginpage />
+   },
+   {
+      path:'/signup',
+      element:<Signup />
+      
    },
    {
       path: "/",
