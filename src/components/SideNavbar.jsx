@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+import userPic from '../assets/photo.jpeg'
 
 const SideNavbar = () => {
 
   const [isExpanded, setIsExpanded] = useState(true);
+  const navigate = useNavigate();
   const toggleSidebar = () => {
     setIsExpanded(prev => !prev);
   };
@@ -12,9 +15,17 @@ const SideNavbar = () => {
     { to: '/dashboard', label: 'Dashboard', icon: 'bi bi-ui-checks-grid' },
     { to: '/users', label: 'User Lists', icon: 'bi bi-person-lines-fill' },
     { to: '/products', label: 'Products', icon: 'bi bi-list-task' },
-    { to: '/transactions', label: 'Transactions', icon: 'bi bi-cash' }
+    { to: '/transactions', label: 'Transactions', icon: 'bi bi-cash' },
+
+     
+   
+   
   ];
 
+   const handleLogout = () => {
+    
+    navigate('/');
+  };
 
   return (
     <>
@@ -23,6 +34,10 @@ const SideNavbar = () => {
           <i className={`bi ${isExpanded ? 'bi-chevron-left' : 'bi-chevron-right'}`}></i>
         </button>
         <h2 className='logo'>T{isExpanded && 'heme'}</h2>
+
+        <NavLink to='/dashboard'>
+
+       
 
         <div className="d-flex align-items-center">
           <div className="user-icon">
@@ -35,6 +50,8 @@ const SideNavbar = () => {
             </div>
           )}
         </div>
+
+         </NavLink>
        { 
         isExpanded && (
          <h6 className='page-subtitle mb-3 mt-3'>Pages</h6>
@@ -52,8 +69,24 @@ const SideNavbar = () => {
               </NavLink>
             </li>
           ))}
-        </ul>
 
+        </ul>
+        <div className="logout">
+          <div className="d-flex align-items-center">
+            <div className="user-icon">
+              <img src={userPic} alt="" className='userImg img-fluid circle'/>
+              {/* Js */}
+            </div>
+            {isExpanded && (
+              <div className='ps-2'>
+                <h6 className='mt-0 mb-0 user-name'> {isExpanded && 'Jeven Smith'} </h6>
+                <span className='user-role'>{isExpanded && 'Admin'}</span>
+              </div>
+            )}
+          </div>
+          <button className='btn btn-primary mb-2 mt-3' onClick={handleLogout}><i class="bi bi-box-arrow-right"></i> Logout </button>
+
+        </div>
       </div>
     </>
   )

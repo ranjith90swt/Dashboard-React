@@ -37,6 +37,7 @@
   font-family: "Inter", sans-serif;
   color: var(--light-gray);
   box-sizing: border-box;
+ 
 }
 /** defaults **/
 a{
@@ -100,6 +101,9 @@ a{
    font-weight: 500;
 
 } 
+.userImg{
+  border-radius: 50%; object-fit: cover;
+}
 .user-name{
     font-size: 16px; color: var(--light-gray);
 }
@@ -109,7 +113,8 @@ a{
 
 
 .sidebar{
-  width: 90px; padding: 1.2rem; position: relative;
+  width: 90px; padding: 1.2rem; position: relative; overflow-y: auto; min-height: 100vh; max-height: 100vh;
+  overflow-x: hidden; box-sizing: border-box;
 }
 
 .toggle-btn{position: absolute; right: 8px; top: 20px; font-size: 1.2rem;
@@ -131,6 +136,8 @@ a{
    color: var(--light-gray); size:var(--fontsize) ;
    padding: 0.7rem 1rem; border-radius: 5px;
    transition: background-color 0.1s ease;
+
+    cursor: pointer;
 }
 .sidebar ul li .nav-link.active{
    border-radius: 4px; color: var(--activeColor);
@@ -143,6 +150,13 @@ a{
 }
 .sidebar ul li .nav-link:focus{
   color: var(--activeColor);
+}
+.logout{
+  position: absolute;
+  bottom: 2rem; width: 100%;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+ 
 }
 
 .main-bx{
