@@ -3,6 +3,7 @@ import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
@@ -67,7 +68,10 @@ const Loginpage = () => {
                 <div className="container text-center ">
                     <div className="row login-input">
                         <div className="col-md-6 ">
-                            <Card title="Login">
+                            <Card 
+                            title="Login" 
+                              extraClass="mb-4 px-5 py-5"
+                            >
 
                                 {/* <div className="col-md-6 text-center login-image">
                 <img
@@ -76,7 +80,7 @@ const Loginpage = () => {
                   className="img-fluid"
                 />
               </div> */}
-                                <div className="form-floating mb-3">
+                                <div className="form-floating mb-4 mt-3">
                                     <InputField
                                         type="text"
                                         value={username}
@@ -125,7 +129,16 @@ const Loginpage = () => {
                                 )}
 
                                 <div className="d-flex justify-content-center align-items-center mt-3">
-                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
+                                    {/* <button className="btn btn-primary mb-2 py-3 w-100" onClick={handleLogin}>Login</button> */}
+                                    <Button
+                                     onClick= {handleLogin}
+                                     className = 'w-100'
+                                     variant = 'primary'
+                                     size='lg'
+                                     label='Login'
+                                    >
+                                        
+                                    </Button>
                                 </div>
                             </Card>
                         </div>
