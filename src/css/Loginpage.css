@@ -1,0 +1,57 @@
+.login-image {
+    height: 250px;
+    width: 450px;
+    border-right: 1px dotted green;
+    margin-top: 5px;
+    padding-right: 10px;
+    object-fit: cover;
+}
+
+.login-input{
+    /* background-color: rgb(72, 66, 153); */
+    margin-left: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('../assets/login.jpg'); */
+    background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: auto 200px; */
+  /* width: 100%; */
+  margin: 0 0.75rem 0 0.75rem; 
+}
+/* floating labels */
+.form-floating {
+  position: relative;
+  /* margin-bottom: 1rem; */
+}
+
+.form-floating input {
+  padding: 1.25rem 0.75rem 0.35rem 0.75rem;
+  height: auto;
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-floating label {
+  position: absolute;
+  height: 24px;
+  top: 0.75rem;
+  left: 0.75rem;
+  transition: all 0.2s ease;
+  /* color: #777; */
+  pointer-events: none;
+  padding: 0 5px;
+  background-color: #191C24;
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+  top: -0.3rem;
+  left: 0.65rem;
+  font-size: 1rem;
+  color: white;
+  }
