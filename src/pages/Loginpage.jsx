@@ -15,17 +15,19 @@ const Loginpage = () => {
 
     const handleLogin = () => {
         // Validate before proceeding
-        // if (!username || !password) {
-        //   setErrors({
-        //     username: !username ? 'Username is required' : '',
-        //     password: !password ? 'Password is required' : '',
-        //   });
-        //   return;
-        // }
-        if (validations()) {
-            navigate('/dashboard');
-
+        if (!username || !password) {
+          setErrors({
+            username: !username ? 'Username is required' : '',
+            password: !password ? 'Password is required' : '',
+          });
+          return;
         }
+        // if (validations()) {
+        //     navigate('/dashboard');
+
+        // }
+                    navigate('/dashboard');
+
     };
     const validations = () => {
         const errors = {};
@@ -42,12 +44,12 @@ const Loginpage = () => {
             errors.username = 'Enter a valid email or phone number';
         }
 
-        if (!password) {
-            errors.password = 'Password is required';
-        } else if (!passwordPattern.test(password)) {
-            errors.password =
-                'Password must be at least 8 characters, include uppercase, lowercase, number, and special character';
-        }
+        // if (!password) {
+        //     errors.password = 'Password is required';
+        // } else if (!passwordPattern.test(password)) {
+        //     errors.password =
+        //         'Password must be at least 8 characters, include uppercase, lowercase, number, and special character';
+        // }
 
         setErrors(errors);
         return Object.keys(errors).length === 0;
