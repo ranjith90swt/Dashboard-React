@@ -2,7 +2,8 @@ import React from 'react'
 
 const InputField = (
     {
-    type = 'text',
+    type = '',
+    name='',
     placeholder = '',
     className = '',
     value,
@@ -13,6 +14,7 @@ const InputField = (
     <>
     <input
         type={type}
+        name={name}
         placeholder={placeholder}
         className={`form-control mb-3 ${className}`}
         value={value}

@@ -1,0 +1,22 @@
+/* SelectField.css */
+  .form-select{
+      padding: 8px 16px; background: var(--primary-color);
+        color: var(--light-gray);            /* Text color */
+
+  }
+
+select option {
+  background: var(--black); /* Light background */
+  color: var(--light-gray);            /* Text color */
+  border: none; padding: 1rem;
+}
+
+/* Optional: style selected option */
+select option:checked {
+  background: var(--actvieColor) !important;
+  font-weight: 400; border: none;
+}
+select option:focus {
+  background: var(--actvieColor);
+  font-weight: 400; border: none;
+}

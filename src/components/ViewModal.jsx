@@ -1,26 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../css/CommonModal.css'
 
 const ViewModal = ({ id = 'viewModal', isOpen, onClose, data, title = 'View Record', exculudeFields = '', footerShow = true}) => {
-  useEffect(() => {
-    const modal = new bootstrap.Modal(document.getElementById(id));
-    if (isOpen) {
-      modal.show();
-    } else {
-      modal.hide();
-    }
+    if (!isOpen) return null;
 
-    const handleHidden = () => {
-      onClose();
-    };
-
-    const modalEl = document.getElementById(id);
-    modalEl.addEventListener('hidden.bs.modal', handleHidden);
-
-    return () => {
-      modalEl.removeEventListener('hidden.bs.modal', handleHidden);
-    };
-  }, [isOpen, id, onClose]);
 
   return (
     <div className="modal fade" id={id} tabIndex="-1" aria-hidden="true">
@@ -32,8 +15,7 @@ const ViewModal = ({ id = 'viewModal', isOpen, onClose, data, title = 'View Reco
             <button
               type="button"
               className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
+              onClick={onClose}
             ></button>
           </div>
 

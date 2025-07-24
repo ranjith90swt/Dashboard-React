@@ -4,6 +4,7 @@ import CommonTable from '../components/CommonTable';
 import ViewModal from '../components/ViewModal';
 import CommonModal from '../components/CommonModal';
 import InputField from '../components/InputField';
+import SelectField from '../components/SelectField';
 
 const UserList = (
   {
@@ -24,7 +25,14 @@ const UserList = (
   const [selectedUser, setSelectedUser] = useState(null);
   const [showViewModal, setShowViewModal] = useState(false);
 
-  const [showAddModal, setShowAddModal] = useState(false)
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [newUser, setNewUser] = useState({
+    name: '',
+    email:'',
+    role:''
+  })
+
+  const [showErrMsg, setShowErrMsg] = useState('');
   
 
   useEffect(() => {
@@ -78,7 +86,7 @@ const UserList = (
           setShowViewModal(true);
          }}
         >
-          <i class="bi bi-eye"></i>
+          <i className="bi bi-eye"></i>
         </button>
       )
     }
@@ -91,6 +99,41 @@ const UserList = (
   const handleCloseModal = () => {
     setShowAddModal(false);
   }
+
+
+  const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setNewUser((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
+const handleAddUser = (e) => {
+  e.preventDefault();
+
+  if (!newUser.name || !newUser.email || !newUser.role) {
+    setShowErrMsg('All fields are Required');
+    return;
+  }
+
+  else{
+    setShowErrMsg({});
+  }
+
+  const newId = users.length ? Math.max(...users.map((u) => u.id)) + 1 : 1;
+
+  const userToAdd = {
+    id: newId,
+    ...newUser,
+    status: 'active',
+  };
+
+  setUsers([...users, userToAdd]);
+  setNewUser({ name: '', email: '', role: '' });
+  setShowAddModal(false);
+};
+
 
 
   return (
@@ -138,14 +181,27 @@ const UserList = (
           placeholder='Search by name..'
         />
 
-        <ViewModal 
-           isOpen={showViewModal}
-           onClose={() => {setShowViewModal(false)}}
-           title='User Details'
-           data={selectedUser}
-           exculudeFields={['password', 'created_at']}
-          footerShow ={false}
-        />
+        <CommonModal 
+          id='viewUserModal'
+          isOpen={showViewModal}
+          onClose={() => setShowViewModal(false)}
+          title="User Details"
+          footer={null}
+        >
+          {selectedUser ? (
+            Object.entries(selectedUser)
+              .filter(([key]) => !['password', 'created_at'].includes(key)) // excluding fields
+              .map(([key, value]) => (
+                <div key={key} className="mb-2 d-flex justify-content-between py-1">
+                  <strong className="text-capitalize w-25">{key}:</strong>
+                  <div className="w-75">{String(value)}</div>
+                </div>
+              ))
+          ) : (
+            <p>No data</p>
+          )}
+        </CommonModal>
+
 
         <CommonModal 
           id='addUserModal'
@@ -154,17 +210,11 @@ const UserList = (
           title="Add New User"
           footer={
             <>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Cancel
-              </button>
+            
               <button
                 type="button"
                 className="btn btn-primary"
-                
+                onClick={handleAddUser}
               >
                 Save
               </button>
@@ -173,16 +223,58 @@ const UserList = (
         >
 
 
-          <form>
-
-            <InputField text='text' className='mb-3' placeholder='Enter user name'/>
+         <form>
+            <InputField
+              name="name"
+              type="text"
+              className="mb-3"
+              placeholder="Enter user name"
+              value={newUser.name}
+              onChange={handleInputChange}
+            />
+          
             
-            <InputField text='text' className='mb-3' placeholder='Enter email'/>
+            <InputField
+              name="email"
+              type="text"
+              className="mb-3"
+              placeholder="Enter email"
+              value={newUser.email}
+              onChange={handleInputChange}
+            />
 
+            <SelectField
+              name="role"
+              // label="User Role"
+              value={newUser.role}
+              placeholder='Select an role'
+              onChange={handleInputChange}
+              options={[
+                { value: 'Admin', label: 'Admin' },
+                { value: 'User', label: 'User' },
+                { value: 'Analyst', label: 'Analyst' },
+                { value: 'Business', label: 'Business' }
+
+              ]}
+            />
+
+
+            <p>
+              {
+                showErrMsg && (
+                  <div className="text-danger mt-3">
+                    {showErrMsg}
+                  </div>
+                )
+              }
+            </p>
           </form>
 
 
+
         </CommonModal>
+
+
       </Card>
     </>
   );
