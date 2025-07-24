@@ -101,6 +101,10 @@ a{
    font-weight: 500;
 
 } 
+.user-icon .user-active{
+  position: absolute; right: 0px; top: 5%;
+  background: rgb(1, 145, 1); width: 13px; height: 13px; border-radius: 50%;
+}
 .userImg{
   border-radius: 50%; object-fit: cover;
 }

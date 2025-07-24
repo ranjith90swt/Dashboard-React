@@ -39,9 +39,11 @@ const SideNavbar = () => {
 
        
 
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center py-3">
           <div className="user-icon">
-            Js
+            {/* Js */}
+            <img src={userPic} className='img-fluid userImg' alt="" />
+            <span className='user-active'></span>
           </div>
           {isExpanded && (
             <div className='ps-2'>
@@ -84,7 +86,7 @@ const SideNavbar = () => {
               </div>
             )}
           </div>
-          <button className='btn btn-primary mb-2 mt-3' onClick={handleLogout}><i class="bi bi-box-arrow-right"></i> Logout </button>
+          <button className='btn btn-primary mb-2 mt-3' onClick={handleLogout}><i class="bi bi-box-arrow-right"></i> {isExpanded && ( <span>Logout</span>  )}</button>
 
         </div>
       </div>

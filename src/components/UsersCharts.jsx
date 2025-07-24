@@ -17,14 +17,14 @@ const UsersCharts = () => {
         label: 'User Role Distribution',
         data: [roleCounts.admin, roleCounts.business, roleCounts.recipient],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)'
+          'rgba(201, 45, 141, 0.7)',
+          'rgba(11, 147, 238, 0.6)',
+          'rgba(241, 183, 35, 0.6)'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)'
+          'rgba(201, 45, 141, 1)',
+          'rgba(11, 147, 238, 1)',
+          'rgba(241, 183, 35, 1)'
         ],
         borderWidth: 1
       }]
@@ -59,9 +59,9 @@ const UsersCharts = () => {
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '100%', display:'flex', justifyContent:'center' }}>
+    <div style={{ width: '100%', height: '100%', display:'flex', justifyContent:'center' }} className='py-2'>
 
-       <canvas ref={canvasRef} width="260" height="260" />
+       <canvas ref={canvasRef} width="260" height="260" className='mb-1'/>
 
         
     </div>
