@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
-     const [showPassword, setShowPassword] = useState(false); 
+     const [showPassword,, setShowPassword] = useState(false); 
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({ username: '', password: '' });
@@ -54,28 +54,15 @@ const Loginpage = () => {
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
-    const togglepasswords = document.querySelector("#togglepassword");
-    const passwords = document.querySelector("#password");
+    
 
-    const viewPassword = () => {
-
-
-    };
     return (
         <>
             <div className="main-bx d-flex justify-content-center align-items-center vh-100 ">
                 <div className="container text-center ">
                     <div className="row login-input">
                         <div className="col-md-6 ">
-                            <Card title="Login">
-
-                                {/* <div className="col-md-6 text-center login-image">
-                <img
-                  src={pattern}
-                  alt="No file is available"
-                  className="img-fluid"
-                />
-              </div> */}
+                            <Card title="Sign in">
                                 <div className="form-floating mb-3">
                                     <InputField
                                         type="text"
@@ -105,27 +92,25 @@ const Loginpage = () => {
                                         }}
 
                                     />
-
                                     <label htmlFor="password">Password</label>
-
-                                    {/* <span className="view-password d-none"><i class="bi bi-eye"></i></span>
-                                    <span className="view-password"><i class="bi bi-eye-slash" id="togglepassword"></i></span> */}
-
                                     <span
-                                        className="view-password"
+                                    className="view-password"
                                         onClick={() => setShowPassword((prev) => !prev)}
                                     >
                                         <i className={`bi ${showPassword ? 'bi-eye' : 'bi-eye-slash'}`}></i>
                                     </span>
-
-
                                 </div>
                                 {errors.password && (
                                  <span className="text-danger small-text">{errors.password}</span>
                                 )}
-
                                 <div className="d-flex justify-content-center align-items-center mt-3">
-                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
+                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Signin</button>
+                                </div>
+                                <span>or</span>
+                                <div className="account-creation">
+                                    <span className="text-center ">
+                                        <NavLink to='/signup' className='account'> Create account  </NavLink>
+                                    </span>
                                 </div>
                             </Card>
                         </div>
