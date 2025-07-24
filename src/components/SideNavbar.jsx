@@ -9,7 +9,7 @@ const SideNavbar = () => {
   };
 
   const navItems = [
-    { to: '/', label: 'Dashboard', icon: 'bi bi-ui-checks-grid' },
+    { to: '/dashboard', label: 'Dashboard', icon: 'bi bi-ui-checks-grid' },
     { to: '/users', label: 'User Lists', icon: 'bi bi-person-lines-fill' },
     { to: '/products', label: 'Products', icon: 'bi bi-list-task' },
     { to: '/transactions', label: 'Transactions', icon: 'bi bi-cash' }
