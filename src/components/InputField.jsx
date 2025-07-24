@@ -18,7 +18,7 @@ const InputField = (
         placeholder={placeholder}
         className={`form-control mb-3 ${className}`}
         value={value}
-        onChange={onChange}
+        onChange={onChange} 
     />
         
     </>

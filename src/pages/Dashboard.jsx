@@ -4,6 +4,7 @@ import Transactions from './Transactions'
 import UserList from './UserList'
 import DashboardChart from '../components/DashboardChart'
 import { StatCard } from '../components/StatCard'
+import UsersCharts from '../components/UsersCharts'
 const Dashboard = () => {
 
   const stats = [
@@ -66,7 +67,7 @@ const Dashboard = () => {
 
 
       <div className="row g-3 mt-2">
-        <div className="col-lg-6">
+        <div className="col-lg-8">
           
           <UserList 
            
@@ -83,19 +84,10 @@ const Dashboard = () => {
           
           
         </div>
-        <div className="col-lg-6">
-          <UserList 
-           
-           title='Recent Users'
-           showSearch={false}
-           showPageSize={false}
-           showPagination={false}
-           showItemCount={false}
-           limit={7}
-           showCardTitle={true}
-           showPageTitle={false}
-           showAddButton = {false}
-          />
+        <div className="col-lg-4">
+          <Card title='User Data' extraClass='justify-content-center'>
+            <UsersCharts />
+          </Card>
         </div>
       </div>
 

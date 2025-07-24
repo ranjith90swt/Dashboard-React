@@ -37,7 +37,7 @@ const UserList = (
 
   useEffect(() => {
     setIsLoading(true);
-    fetch('../data/user.json')
+    fetch('http://localhost:3001/users')
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -109,32 +109,46 @@ const UserList = (
   }));
 };
 
-const handleAddUser = (e) => {
+const handleAddUser = async (e) => {
   e.preventDefault();
 
   if (!newUser.name || !newUser.email || !newUser.role) {
     setShowErrMsg('All fields are Required');
     return;
+  } else {
+    setShowErrMsg('');
   }
-
-  else{
-    setShowErrMsg({});
-  }
-
-  const newId = users.length ? Math.max(...users.map((u) => u.id)) + 1 : 1;
 
   const userToAdd = {
-    id: newId,
     ...newUser,
     status: 'active',
   };
 
-  setUsers([...users, userToAdd]);
-  setNewUser({ name: '', email: '', role: '' });
-  setShowAddModal(false);
+  try {
+    const response = await fetch('http://localhost:3001/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userToAdd),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to add user');
+    }
+
+    const savedUser = await response.json();
+
+    // Update local users state with the new user from server (including id)
+    setUsers(prevUsers => [...prevUsers, savedUser]);
+
+    // Reset form and close modal
+    setNewUser({ name: '', email: '', role: '' });
+    setShowAddModal(false);
+  } catch (error) {
+    setShowErrMsg('Error adding user: ' + error.message);
+  }
 };
-
-
 
   return (
     <>
