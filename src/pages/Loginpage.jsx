@@ -42,8 +42,8 @@ const Loginpage = () => {
             }
         } else {
             setErrors({
-                username: '',
-                password: '',
+                username: 'User name is required',
+                password: 'Password is required',
             });
         }
     };
