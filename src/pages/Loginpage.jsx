@@ -9,49 +9,49 @@ import { use } from 'react'
 const Loginpage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
-    const [showPassword, , setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({ username: '', password: '' });
 
-   const handleLogin = () => {
-  if (!username || !password) {
-    setErrors({
-      username: !username ? 'Username is required' : '',
-      password: !password ? 'Password is required' : '',
-    });
-    return;
-  }
+    const handleLogin = () => {
+        if (!username || !password) {
+            setErrors({
+                username: !username ? 'Username is required' : '',
+                password: !password ? 'Password is required' : '',
+            });
+            return;
+        }
 
-  const userData = JSON.parse(sessionStorage.getItem('user'));
+        const userData = JSON.parse(sessionStorage.getItem('user'));
 
-  if (userData) {
-    const { email, phoneNumber, password: storedPassword } = userData;
+        if (userData) {
+            const { email,userName, phoneNumber, password: storedPassword } = userData;
 
-    const isValidUser =
-      (username.trim() === email || username.trim() === phoneNumber) &&
-      password.trim() === storedPassword;
+            const isValidUser =
+                (username.trim() === email || username.trim() === phoneNumber || username.trim() === userName) &&
+                password.trim() === storedPassword ;
 
-    if (isValidUser) {
-      navigate('/dashboard');
-    } else {
-      setErrors({
-        username: 'Invalid email/phone or password',
-        password: 'Invalid password',
-      });
-    }
-  } else {
-    setErrors({
-      username: '',
-      password: '',
-    });
-  }
-};
+            if (isValidUser) {
+                navigate('/dashboard');
+            } else {
+                setErrors({
+                    username: 'Invalid email/phone or password',
+                    password: 'Invalid password',
+                });
+            }
+        } else {
+            setErrors({
+                username: '',
+                password: '',
+            });
+        }
+    };
 
 
-   useEffect(()=>{
-    const users = sessionStorage.getItem('user');
-   })
+    useEffect(() => {
+        const users = sessionStorage.getItem('user');
+    })
     return (
         <>
             <div className="main-bx d-flex justify-content-center align-items-center vh-100 ">
