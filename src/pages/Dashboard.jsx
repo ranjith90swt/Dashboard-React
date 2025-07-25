@@ -85,7 +85,7 @@ const Dashboard = () => {
           
         </div>
         <div className="col-lg-4">
-          <Card title='User Data' extraClass='justify-content-center'>
+          <Card title='User Analytics' extraClass='justify-content-center'>
             <UsersCharts />
           </Card>
         </div>
