@@ -7,6 +7,7 @@
     object-fit: cover;
 }
 
+
 .login-input{
     /* background-color: rgb(72, 66, 153); */
     margin-left: 1rem;
@@ -32,12 +33,12 @@
   height: auto;
   width: 100%;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
 }
 
 .form-floating label {
-  position: absolute;
+  position: absolute;  box-shadow: none !important;
   height: 24px;
   top: 0.75rem;
   left: 0.75rem;
@@ -45,7 +46,7 @@
   /* color: #777; */
   pointer-events: none;
   padding: 0 5px;
-  background-color: #191C24;
+  background: transparent;
 }
 
 .form-floating input:focus + label,
@@ -53,7 +54,11 @@
   top: -0.3rem;
   left: 0.65rem;
   font-size: 1rem;
-  color: white;
+  color: var(--light-gray); 
+  
+  /* background: var(--primary-color); */ 
+    background: #023864; z-index: 23; box-shadow: none !important;
+
   }
   .view-password{
     position: absolute;
@@ -69,4 +74,31 @@
   }
 .account:hover{
     color: white;
+}
+
+.pagebody{
+  background: #1f7f9c;
+  background: linear-gradient(75deg,rgba(32, 49, 66, 1) 0%, rgb(47, 75, 92) 48%, rgba(4, 28, 62, 1) 100%);
+
+  /* background: radial-gradient(circle,rgba(85, 106, 115, 1) 0%, rgba(110, 115, 128, 1) 28%, rgba(102, 82, 102, 1) 65%, rgba(32, 31, 46, 1) 100%); */
+}
+.login-bx{
+  /* background: linear-gradient(215deg, #262a33, #333944); */
+
+  /* background: var(--primary-color); */
+  background: #2e3547;
+  background: linear-gradient(45deg,rgba(34, 92, 128, 1) 0%, rgba(38, 128, 140, 1) 50%, rgba(72, 126, 172, 1) 100%);
+  border: #25A2B3 1px solid;
+
+
+
+}
+.login-bx .form-control{
+  border: var(--primary-color) 1px solid;
+  background: #023864;
+}
+
+.login-bx .btn-primary{
+  background: #023864 !important; padding: 12px 24px;
+  color: var(--light-gray);
 }

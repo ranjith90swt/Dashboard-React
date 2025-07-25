@@ -3,7 +3,7 @@ import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { use } from 'react'
+import Button from '../components/Button'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
@@ -54,11 +54,11 @@ const Loginpage = () => {
     })
     return (
         <>
-            <div className="main-bx d-flex justify-content-center align-items-center vh-100 ">
+            <div className="main-bx pagebody d-flex justify-content-center align-items-center vh-100 ">
                 <div className="container text-center ">
                     <div className="row login-input">
                         <div className="col-md-6 ">
-                            <Card title="Login">
+                            <Card title="Login" extraClass='px-5 py-4 rounded-4 login-bx'>
 
                                 {/* <div className="col-md-6 text-center login-image">
                 <img
@@ -67,7 +67,7 @@ const Loginpage = () => {
                   className="img-fluid"
                 />
               </div> */}
-                                <div className="form-floating mb-3">
+                                <div className="form-floating mb-4 mt-3">
                                     <InputField
                                         type="text"
                                         value={username}
@@ -108,15 +108,27 @@ const Loginpage = () => {
                                     <span className="text-danger small-text">{errors.password}</span>
                                 )}
                                 <div className="d-flex justify-content-center align-items-center mt-3">
-                                    <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
+                                    {/* <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button> */}
+
+                                    <Button 
+
+                                    onClick={handleLogin}
+                                    variant='primary'
+                                    className='w-100 mt-3 mb-3'
+                                    size='lg'
+                                    label='Login'
+
+                                    
+                                    ></Button>
                                     
                                 </div>
                                 <span className="text-center">or</span>
                                 <div className="create-account">
+                                    You don't have an account? 
                                     <NavLink
-                                        to='/signup' className='account'
+                                        to='/signup' className='ms-2 account'
                                     >
-                                        create new
+                                        Create new
                                     </NavLink>
                                 </div>
                             </Card>
