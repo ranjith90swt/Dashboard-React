@@ -1,61 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { use } from 'react'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
-     const [showPassword,, setShowPassword] = useState(false); 
+    const [showPassword, , setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({ username: '', password: '' });
 
-    const handleLogin = () => {
-        // Validate before proceeding
-        if (!username || !password) {
-          setErrors({
-            username: !username ? 'Username is required' : '',
-            password: !password ? 'Password is required' : '',
-          });
-          return;
-        }
-        // if (validations()) {
-        //     navigate('/dashboard');
+   const handleLogin = () => {
+  if (!username || !password) {
+    setErrors({
+      username: !username ? 'Username is required' : '',
+      password: !password ? 'Password is required' : '',
+    });
+    return;
+  }
 
-        // }
-                    navigate('/dashboard');
+  const userData = JSON.parse(sessionStorage.getItem('user'));
 
-    };
-    const validations = () => {
-        const errors = {};
+  if (userData) {
+    const { email, phoneNumber, password: storedPassword } = userData;
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidUser =
+      (username.trim() === email || username.trim() === phoneNumber) &&
+      password.trim() === storedPassword;
 
-        const phonePattern = /^[6-9]\d{9}$/;
+    if (isValidUser) {
+      navigate('/dashboard');
+    } else {
+      setErrors({
+        username: 'Invalid email/phone or password',
+        password: 'Invalid password',
+      });
+    }
+  } else {
+    setErrors({
+      username: '',
+      password: '',
+    });
+  }
+};
 
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-        if (!username) {
-            errors.username = 'Username is required';
-        } else if (!emailPattern.test(username) && !phonePattern.test(username)) {
-            errors.username = 'Enter a valid email or phone number';
-        }
-
-        // if (!password) {
-        //     errors.password = 'Password is required';
-        // } else if (!passwordPattern.test(password)) {
-        //     errors.password =
-        //         'Password must be at least 8 characters, include uppercase, lowercase, number, and special character';
-        // }
-
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-    
-
+   useEffect(()=>{
+    const users = sessionStorage.getItem('user');
+   })
     return (
         <>
             <div className="main-bx d-flex justify-content-center align-items-center vh-100 ">
@@ -102,24 +98,24 @@ const Loginpage = () => {
                                     />
                                     <label htmlFor="password">Password</label>
                                     <span
-                                    className="view-password"
+                                        className="view-password"
                                         onClick={() => setShowPassword((prev) => !prev)}
                                     >
                                         <i className={`bi ${showPassword ? 'bi-eye' : 'bi-eye-slash'}`}></i>
                                     </span>
                                 </div>
                                 {errors.password && (
-                                 <span className="text-danger small-text">{errors.password}</span>
+                                    <span className="text-danger small-text">{errors.password}</span>
                                 )}
                                 <div className="d-flex justify-content-center align-items-center mt-3">
                                     <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
                                 </div>
                                 <span className="text-center">or</span>
                                 <div className="create-account">
-                                        <NavLink 
-                                    to='/signup' className='account'
+                                    <NavLink
+                                        to='/signup' className='account'
                                     >
-                                    create new
+                                        create new
                                     </NavLink>
                                 </div>
                             </Card>
