@@ -5,6 +5,7 @@ import ViewModal from '../components/ViewModal';
 import CommonModal from '../components/CommonModal';
 import InputField from '../components/InputField';
 import SelectField from '../components/SelectField';
+import Button from '../components/Button';
 
 const UserList = (
   {
@@ -33,6 +34,9 @@ const UserList = (
   })
 
   const [showErrMsg, setShowErrMsg] = useState('');
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+
   
 
   useEffect(() => {
@@ -65,8 +69,8 @@ const UserList = (
     { header: 'Role', accessor: 'role', sortable:true },
     { header: 'Status', accessor: 'status', sortable:true, render: (row) => (
         <span
-          className={`btn btn-sm ${
-            row.status === 'active' ? 'btn-success' : 'btn-danger'
+          className={`btn-sm ${
+            row.status === 'active' ? 'btn-active' : 'btn-inactive'
           }`}
           disabled
         >
@@ -80,7 +84,8 @@ const UserList = (
       header:"Action",
       accessor:'action',
       render: (row) => (
-        <button className='edit-icon'
+        <>
+        <button className='action-icon edit-icon me-2'
          onClick={() =>{
           setSelectedUser(row);
           setShowViewModal(true);
@@ -88,6 +93,27 @@ const UserList = (
         >
           <i className="bi bi-eye"></i>
         </button>
+
+        <button className='action-icon edit-icon me-2' onClick={() => {
+        setSelectedUser(row);
+        setEditModal(true);           
+        setNewUser({                  
+          name: row.name,
+          email: row.email,
+          role: row.role,
+        });
+        setShowAddModal(true);
+      }}>
+        <i className="bi bi-pencil-square"></i>
+      </button>
+
+        <button className='action-icon delete-icon ' onClick={() => {
+        setSelectedUser(row);
+        setConfirmDelete(true) // show confirmation modal
+        }}>
+        <i className="bi bi-trash"></i>
+        </button>
+      </>
       )
     }
   ];
@@ -109,7 +135,9 @@ const UserList = (
   }));
 };
 
-const handleAddUser = async (e) => {
+// save & update user 
+
+const handleSaveUser = async (e) => {
   e.preventDefault();
 
   if (!newUser.name || !newUser.email || !newUser.role) {
@@ -119,36 +147,98 @@ const handleAddUser = async (e) => {
     setShowErrMsg('');
   }
 
-  const userToAdd = {
-    ...newUser,
-    status: 'active',
-  };
+  if(editModal){
+    // EDIT user
+    try {
+      const response = await fetch(`http://localhost:3001/users/${selectedUser.id}`, {
+        method: 'PUT', // or PATCH depending on your API
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...selectedUser, ...newUser }),
+      });
 
-  try {
-    const response = await fetch('http://localhost:3001/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userToAdd),
-    });
+      if (!response.ok) {
+        throw new Error('Failed to update user');
+      }
 
-    if (!response.ok) {
-      throw new Error('Failed to add user');
+      const updatedUser = await response.json();
+
+      setUsers(prevUsers =>
+        prevUsers.map(user => user.id === selectedUser.id ? updatedUser : user)
+      );
+
+      setShowAddModal(false);
+      setNewUser({ name: '', email: '', role: '' });
+      setSelectedUser(null);
+      setEditModal(false);
+    } catch (error) {
+      setShowErrMsg('Error updating user: ' + error.message);
+    }
+  }
+
+  else{
+
+    //add user 
+        const userToAdd = {
+        ...newUser,
+        status: 'active',
+      };
+
+      try {
+        const response = await fetch('http://localhost:3001/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userToAdd),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to add user');
+        }
+
+        const savedUser = await response.json();
+
+        // Update local users state with the new user from server (including id)
+        setUsers(prevUsers => [...prevUsers, savedUser]);
+
+        // Reset form and close modal
+        setNewUser({ name: '', email: '', role: '' });
+        setShowAddModal(false);
+      } catch (error) {
+        setShowErrMsg('Error adding user: ' + error.message);
+      }
+    };
+
+
+  }
+
+ // delete user
+
+  const handleDeleteUser = async()=>{
+
+    if(!selectedUser) return;
+
+    try {
+
+      const response = await fetch(`http://localhost:3001/users/${selectedUser.id}`, {
+        method: 'DELETE',
+      });
+
+      if(!response.ok){
+        throw new Error('Failed to delete user');
+      }
+
+      setUsers(prev => prev.filter(user => user.id !== selectedUser.id));
+      setConfirmDelete(false);
+      setSelectedUser(null);
+      
+    } catch (error) {
+        console.log(`Delete Error ${error}`)
     }
 
-    const savedUser = await response.json();
-
-    // Update local users state with the new user from server (including id)
-    setUsers(prevUsers => [...prevUsers, savedUser]);
-
-    // Reset form and close modal
-    setNewUser({ name: '', email: '', role: '' });
-    setShowAddModal(false);
-  } catch (error) {
-    setShowErrMsg('Error adding user: ' + error.message);
   }
-};
 
   return (
     <>
@@ -220,18 +310,35 @@ const handleAddUser = async (e) => {
         <CommonModal 
           id='addUserModal'
           isOpen={showAddModal}
-          onClose={handleCloseModal}
-          title="Add New User"
+          // onClose={handleCloseModal}
+          onClose={() => {
+            setShowAddModal(false);
+            setEditModal(false);       
+            setSelectedUser(null);
+            setNewUser({ name: '', email: '', role: '' });
+          }}
+          title={editModal ? "Edit User" : "Add User"}
           footer={
             <>
-            
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={handleAddUser}
+
+              <Button
+                onClick={handleCloseModal}
+                label='Cancel'
+                variant='secondary'
+                size='md'
               >
-                Save
-              </button>
+
+              </Button>
+
+              <Button onClick={handleSaveUser}
+                type='button'
+                variant='primary'
+                size='md'
+                label={editModal ? "Update" : "Save"}
+
+
+              />
+             
             </>
           }
         >
@@ -264,10 +371,10 @@ const handleAddUser = async (e) => {
               placeholder='Select an role'
               onChange={handleInputChange}
               options={[
-                { value: 'Admin', label: 'Admin' },
-                { value: 'User', label: 'User' },
-                { value: 'Analyst', label: 'Analyst' },
-                { value: 'Business', label: 'Business' }
+                { value: 'admin', label: 'Admin' },
+                { value: 'user', label: 'User' },
+                { value: 'analyst', label: 'Analyst' },
+                { value: 'business', label: 'Business' }
 
               ]}
             />
@@ -288,6 +395,39 @@ const handleAddUser = async (e) => {
 
         </CommonModal>
 
+        {/* delete user */}
+        
+         <CommonModal
+          id='confirmDeleteModal'
+          isOpen={confirmDelete}
+          onClose={() => setConfirmDelete(false)}
+           title='Delete User'
+
+           footer={
+              <>
+               
+                <Button 
+                  onClick={() => setConfirmDelete(false)}
+
+                  variant='secondary'
+                  size='md'
+                  label='Cancel'
+                />
+                <Button 
+                  onClick={handleDeleteUser}
+                  variant='danger'
+                  size='md'
+                  label='Delete'
+                >
+
+                </Button>
+              </>
+           }
+         >    
+            <p>Are you sure you want to delete <strong>{selectedUser?.name}</strong>?</p>
+
+
+         </CommonModal>
 
       </Card>
     </>

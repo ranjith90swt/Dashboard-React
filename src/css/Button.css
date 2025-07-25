@@ -1,0 +1,26 @@
+
+
+.btn{}
+.btn-primary {
+  position: relative;
+  border: none;
+  color: #fff;
+  padding: 8px 24px;
+  background: linear-gradient(95deg, #0259d1 35%, #023d89) !important;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(215deg, #0259d1 35%, #023d89);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0.1s; /* delay added here */
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}

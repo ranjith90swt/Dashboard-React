@@ -19,6 +19,11 @@
   --border-radius:5px;
   --fontsize: 14px;
   --activeColor : #2198EF;
+
+    --greenDark: #198754;
+
+
+  --redDark: #DC3545;
 }
 
 :root[data-bs-theme="dark"] {
@@ -29,7 +34,10 @@
   --border-color: #3c4049;
   --activeColor : #2198EF;
 
-  
+  --greenDark: #198754;
+
+
+  --redDark: #DC3545;
 }
 
 
@@ -204,40 +212,35 @@ a{
 }
 
 /** buttons **/
-.btn-success, .btn-danger{
-  margin: 0; padding: 2px 4px; font-size: 13px;
-  min-width: 70px;
+.btn-active, .btn-inactive{
+  margin: 0; padding: 2px 8px; font-size: 14px; display: inline-block;
+  min-width: 70px; border: none; border-radius: var(--border-radius);
+  color: #fff; text-align: center;
+}
+
+.btn-active{
+  background: var(--greenDark); 
+}
+.btn-inactive{
+  background: var(--redDark); 
+}
+
+.action-icon {
+    background: var(--black); text-align: center;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px; 
 }
 .edit-icon{
-    background: var(--black); text-align: center;
-    padding: 1px 10px;
-    border: none;
-    border-radius: 5px; color: #273c66;
+   color: #273c66;
 }
 .edit-icon i{
   color: #375fb1; font-size: 16px;
 }
 
-.btn-primary {
-  position: relative;
-  border: none;
-  color: #fff;
-  padding: 8px 24px;
-  background: linear-gradient(95deg, #0259d1 35%, #023d89);
-  overflow: hidden;
-  z-index: 1;
+.delete-icon, .delete-icon i {
+  color: var(--redDark);
 }
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(215deg, #0259d1 35%, #023d89);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out 0.1s; /* delay added here */
-  z-index: -1;
-}
-
-.btn-primary:hover::before {
-  opacity: 1;
+.delete-icon i{
+  font-size: 16px;
 }

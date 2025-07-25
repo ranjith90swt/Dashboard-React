@@ -1,39 +1,9 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Alice",
-      "email": "alice@example.com",
-      "role": "Admin",
-      "status": "active"
-    },
-    {
-      "id": "2",
-      "name": "Bob",
-      "email": "bob@example.com",
-      "role": "User",
-      "status": "inactive"
-    },
-    {
-      "id": "3",
-      "name": "Test",
-      "email": "ranjith@creativeeyetech.com",
-      "role": "Analyst",
-      "status": "active"
-    },
-    {
-      "id": "u001",
-      "name": "Alice Fintech",
-      "email": "alice@fintech.com",
-      "password": "$2b$10$7yEkJtH8zW4Bd1NqXc3Zje3nJcuyrtnwG3U1zkD2VcvE4IxrXq8qO",
-      "role": "business",
-      "status": "active",
-      "created_at": "2025-07-10T08:00:00Z"
-    },
-    {
       "id": "u002",
       "name": "Bob Corp",
-      "email": "bob@bobcorp.io",
+      "email": "bob@bobcorp.com",
       "password": "$2b$10$ZzXvMI7ReoM8wT3yDhhdU.T3bVR5Rwvx2UGOUXZwAoxzFBxRYXqfK",
       "role": "business",
       "status": "active",
@@ -42,20 +12,11 @@
     {
       "id": "u003",
       "name": "Admin User",
-      "email": "admin@payouts.io",
+      "email": "admin@payouts.com",
       "password": "$2b$10$UpPyICo7vqO5VKMwTqY7w.2e6gk5LxUtgNczIj23P3QvIR6W8pVuO",
-      "role": "admin",
+      "role": "analyst",
       "status": "active",
       "created_at": "2025-07-01T12:30:00Z"
-    },
-    {
-      "id": "u004",
-      "name": "Carol Freelancer",
-      "email": "carol@freelance.me",
-      "password": "$2b$10$F9oKu1R0PxA7x5J5oNk/DOmGvlhUuKlBnGHBFzYQzQr6KOuUvjcsW",
-      "role": "recipient",
-      "status": "inactive",
-      "created_at": "2025-07-15T10:00:00Z"
     },
     {
       "id": "u005",
@@ -200,7 +161,13 @@
       "role": "recipient",
       "status": "inactive",
       "created_at": "2025-07-10T09:00:00Z"
+    },
+    {
+      "id": "9c70",
+      "name": "Ranjith Kumar",
+      "email": "ranjith@creativeeyetech.com",
+      "role": "User",
+      "status": "active"
     }
-
-]
+  ]
 }
