@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Card from '../components/Card'
 import InputField from '../components/InputField'
 import '../css/Loginpage.css'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 // import jwt from 'JsonWebToken'
 
 const Loginpage = () => {
@@ -113,6 +113,14 @@ const Loginpage = () => {
                                 )}
                                 <div className="d-flex justify-content-center align-items-center mt-3">
                                     <button className="btn btn-primary mb-2" onClick={handleLogin}>Login</button>
+                                </div>
+                                <span className="text-center">or</span>
+                                <div className="create-account">
+                                        <NavLink 
+                                    to='/signup' className='account'
+                                    >
+                                    create new
+                                    </NavLink>
                                 </div>
                             </Card>
                         </div>
