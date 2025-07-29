@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import userPic from '../assets/photo.jpeg'
@@ -21,11 +21,19 @@ const SideNavbar = () => {
    
    
   ];
+  const [userData, setUserData] = useState({});
 
    const handleLogout = () => {
     
     navigate('/');
   };
+  useEffect(() => {
+  const data = sessionStorage.getItem('user');
+  if (data) {
+    setUserData(JSON.parse(data));
+  }
+}, []);
+
 
   return (
     <>
@@ -47,7 +55,7 @@ const SideNavbar = () => {
           </div>
           {isExpanded && (
             <div className='ps-2'>
-              <h6 className='mt-0 mb-0 user-name'> {isExpanded && 'Jeven Smith'} </h6>
+              <h6 className='mt-0 mb-0 user-name'> {isExpanded && ''}  {userData.userName}</h6>
               <span className='user-role'>{isExpanded && 'Admin'}</span>
             </div>
           )}
@@ -81,7 +89,7 @@ const SideNavbar = () => {
             </div>
             {isExpanded && (
               <div className='ps-2'>
-                <h6 className='mt-0 mb-0 user-name'> {isExpanded && 'Jeven Smith'} </h6>
+                <h6 className='mt-0 mb-0 user-name'> {userData?.userName || ''} </h6>
                 <span className='user-role'>{isExpanded && 'Admin'}</span>
               </div>
             )}
