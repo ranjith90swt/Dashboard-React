@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { useThemeObserver } from "../hooks/useThemeObserver";
 
 // Register chart components
 ChartJS.register(
@@ -26,11 +27,15 @@ const PayoutsChart = () => {
   const chartRef = useRef();
   const [rawData, setRawData] = useState(null);
 
+  const theme = useThemeObserver();
+
   useEffect(() => {
     fetch("../data/payout.json")
       .then((res) => res.json())
       .then((data) => setRawData(data));
   }, []);
+
+  const gridColor = theme === 'dark' ? "#3c4049" : "#e0e0e0";
 
   const options = {
     responsive: true,
@@ -39,8 +44,12 @@ const PayoutsChart = () => {
       tooltip: { mode: "index", intersect: false },
     },
     scales: {
-      x: { title: { display: true, text: "Date" } },
-      y: { beginAtZero: true, title: { display: true, text: "Amount (INR)" } },
+      x: { title: { display: true, text: "Date" }, grid:{
+        color: gridColor
+      } },
+      y: { beginAtZero: true, title: { display: true, text: "Amount (INR)" }, grid:{
+        color: gridColor
+      }  },
     },
   };
 
@@ -54,6 +63,8 @@ const PayoutsChart = () => {
   });
   const dates = Object.keys(totalsByDate).sort();
   const amounts = dates.map((d) => totalsByDate[d]);
+
+ 
 
   const data = {
     labels: dates,

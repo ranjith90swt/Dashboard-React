@@ -8,7 +8,9 @@ import {
   Legend,
   Title
 } from "chart.js";
+import { useThemeObserver } from "../hooks/useThemeObserver";
 
+// Register Chart.js components
 Chart.register(
   BarElement,
   CategoryScale,
@@ -21,11 +23,16 @@ Chart.register(
 const TransactionChart = () => {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
+  const theme = useThemeObserver();
 
   useEffect(() => {
+    let isMounted = true;
+
     fetch("/data/transaction_logs.json")
       .then((res) => res.json())
       .then((transactions) => {
+        if (!isMounted || !chartRef.current) return;
+
         const dailySuccess = {};
         const dailyFailed = {};
 
@@ -45,11 +52,15 @@ const TransactionChart = () => {
         const successData = allDates.map((date) => dailySuccess[date] || 0);
         const failedData = allDates.map((date) => dailyFailed[date] || 0);
 
+        // Destroy previous chart if exists
         if (chartInstanceRef.current) {
           chartInstanceRef.current.destroy();
         }
 
         const ctx = chartRef.current.getContext("2d");
+        if (!ctx) return;
+
+        const gridColor = theme === "dark" ? "#3c4049" : "#e0e0e0";
 
         chartInstanceRef.current = new Chart(ctx, {
           type: "bar",
@@ -82,23 +93,33 @@ const TransactionChart = () => {
             scales: {
               x: {
                 stacked: false,
-                title: { display: true, text: "Date" }
+                title: { display: true, text: "Date" },
+                grid: {
+                  color: gridColor
+                }
               },
               y: {
                 beginAtZero: true,
-                title: { display: true, text: "Amount (INR)" }
+                title: { display: true, text: "Amount (INR)" },
+                grid: {
+                  color: gridColor
+                }
               }
             }
           }
         });
+      })
+      .catch((err) => {
+        console.error("Failed to load transaction data:", err);
       });
 
     return () => {
+      isMounted = false;
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
       }
     };
-  }, []);
+  }, [theme]); // re-run on theme change
 
   return (
     <div style={{ maxWidth: "100%", margin: "0 auto" }}>
