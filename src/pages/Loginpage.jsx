@@ -61,19 +61,13 @@ const Loginpage = () => {
     })
     return (
         <>
-            <div className="main-bx pagebody d-flex justify-content-center align-items-center vh-100 ">
+            <div className="main-bx pagebody d-flex justify-content-center align-items-center vh-100 "> 
                 <div className="container text-center ">
                     <div className="row login-input">
-                        <div className="col-md-6 ">
+                        <div className="col-md-5">
                             <Card title="Login" extraClass='px-5 py-4 rounded-4 login-bx'>
-
-                                {/* <div className="col-md-6 text-center login-image">
-                <img
-                  src={pattern}
-                  alt="No file is available"
-                  className="img-fluid"
-                />
-              </div> */}
+                                <div className="line1"></div>
+                                
                                 <div className="form-floating mb-4 mt-3">
                                     <InputField
                                         type="text"

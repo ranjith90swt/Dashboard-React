@@ -5,6 +5,8 @@ import UserList from './UserList'
 import DashboardChart from '../components/DashboardChart'
 import { StatCard } from '../components/StatCard'
 import UsersCharts from '../components/UsersCharts'
+import PayoutsChart from '../components/PayoutsChart'
+import TransactionChart from '../components/TransactionChart'
 const Dashboard = () => {
 
   const stats = [
@@ -87,6 +89,19 @@ const Dashboard = () => {
         <div className="col-lg-4">
           <Card title='User Analytics' extraClass='justify-content-center'>
             <UsersCharts />
+          </Card>
+        </div>
+      </div>
+
+      <div className="row g-3 mt-2">
+        <div className="col-lg-6">
+          <Card title='Area Chart - Daily Total Payout Amounts'>
+            <PayoutsChart />
+          </Card>
+        </div>
+        <div className="col-lg-6">
+          <Card title='Transaction Logs'> 
+            <TransactionChart />
           </Card>
         </div>
       </div>
