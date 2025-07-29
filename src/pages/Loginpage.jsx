@@ -9,6 +9,7 @@ import Button from '../components/Button'
 const Loginpage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
+    const[phoneNumber,setPhoneNumber] = useState('')
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -51,6 +52,12 @@ const Loginpage = () => {
 
     useEffect(() => {
         const users = sessionStorage.getItem('user');
+        if (users){
+             const parsed = JSON.parse(users);
+        setUsername(parsed.phoneNumber || '');
+        setPassword(parsed.password || '');
+
+        }
     })
     return (
         <>
