@@ -7,6 +7,7 @@ import { StatCard } from '../components/StatCard'
 import UsersCharts from '../components/UsersCharts'
 import PayoutsChart from '../components/PayoutsChart'
 import TransactionChart from '../components/TransactionChart'
+import StatusTrackingChart from '../components/StatusTrackingChart'
 const Dashboard = () => {
 
   const stats = [
@@ -102,6 +103,11 @@ const Dashboard = () => {
         <div className="col-lg-6">
           <Card title='Transaction Logs'> 
             <TransactionChart />
+          </Card>
+        </div>
+        <div className="col-lg-6">
+          <Card title='Transactions Graphical data'> 
+            <StatusTrackingChart />
           </Card>
         </div>
       </div>
