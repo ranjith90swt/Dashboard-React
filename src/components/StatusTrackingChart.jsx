@@ -13,6 +13,7 @@ import {
   LineController
 } from 'chart.js';
 import { color } from "chart.js/helpers";
+import { useThemeObserver } from "../hooks/useThemeObserver";
 
 Chart.register(
   BarElement,
@@ -31,6 +32,8 @@ Chart.register(
 const StatusTrackingChart = () => {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
+  const theme = useThemeObserver();
+
 
   useEffect(() => {
     fetch("/data/transaction_logs.json")
@@ -60,6 +63,9 @@ const StatusTrackingChart = () => {
         }
 
         const ctx = chartRef.current.getContext("2d");
+
+          const gridColor = theme === 'dark' ? "#3c4049" : "#e0e0e0";
+
 
       chartInstanceRef.current = new Chart(ctx, {
   type: 'bar',
@@ -108,9 +114,9 @@ const StatusTrackingChart = () => {
           display: true,
           text: 'Date'
         },
-        // grid:{
-        //     color:'yellow'
-        // },
+        grid:{
+            color:gridColor
+        },
       },
       y: {
         beginAtZero: true,
@@ -118,9 +124,9 @@ const StatusTrackingChart = () => {
           display: true,
           text: 'Amount (INR)'
         },
-        // grid:{
-        //     color:'pink'
-        // }
+        grid:{
+            color: gridColor
+        }
       }
     }
   }
@@ -136,7 +142,7 @@ const StatusTrackingChart = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: "100%", margin: "0 auto" }}>
+    <div style={{ maxWidth: "100%", height:"450px", margin: "0 auto" }}>
       <canvas ref={chartRef}></canvas>
     </div>
   );

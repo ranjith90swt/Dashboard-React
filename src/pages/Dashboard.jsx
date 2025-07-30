@@ -105,7 +105,7 @@ const Dashboard = () => {
             <TransactionChart />
           </Card>
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-12">
           <Card title='Transactions Graphical data'> 
             <StatusTrackingChart />
           </Card>
