@@ -1,10 +1,11 @@
 /** top nav bar **/
 
 .top-navbar{
-  padding: 0 0.5rem 0.45rem 0.5rem; 
+  padding: 0.5rem 0.5rem; 
   /* border-bottom: var(--border-color) 1px solid;  */
+  background: var(--black);
   margin-bottom: 1rem;
-  border-radius: var(--border-radius);
+  /* border-radius: var(--border-radius); */
 }
 .mode-btn{
   background: var(--primary-color); width: 42px; height: 42px; border-radius: 50%; border: var(--border-color) 1px solid;

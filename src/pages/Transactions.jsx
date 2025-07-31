@@ -18,34 +18,37 @@ const Transactions = ({
   const [carts, setCarts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-   const [selectedUser, setSelectedUser] = useState(null);
-    const [showViewModal, setShowViewModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showViewModal, setShowViewModal] = useState(false);
 
-useEffect(() => {
-  const savedCarts = sessionStorage.getItem('cartsData');
+  const [pageSize, setPageSize] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  if (savedCarts) {
-    setCarts(JSON.parse(savedCarts));
-  } else {
-    const timer = setTimeout(() => {
-      setIsLoading(true);
-      fetch('https://dummyjson.com/carts')
-        .then((res) => res.json())
-        .then((data) => {
-          setCarts(data.carts);
-          sessionStorage.setItem('cartsData', JSON.stringify(data.carts));
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error('API error:', error);
-          setIsLoading(false);
-        });
-    }, 100);
+  useEffect(() => {
+    const savedCarts = sessionStorage.getItem('cartsData');
 
-    return () => clearTimeout(timer);
-  }
-}, []);
+    if (savedCarts) {
+      setCarts(JSON.parse(savedCarts));
+      setIsLoading(false);
+    } else {
+      const timer = setTimeout(() => {
+        setIsLoading(true);
+        fetch('https://dummyjson.com/carts')
+          .then((res) => res.json())
+          .then((data) => {
+            setCarts(data.carts);
+            sessionStorage.setItem('cartsData', JSON.stringify(data.carts));
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            console.error('API error:', error);
+            setIsLoading(false);
+          });
+      }, 100);
 
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const filteredList = carts.filter(item =>
     item.userId.toString().includes(searchTerm.toLowerCase())
@@ -53,32 +56,31 @@ useEffect(() => {
 
   const displayUserList = limit ? filteredList.slice(0, 10) : filteredList;
 
- const columns = [
-  { header: 'ID', accessor: 'id', sortable: true },
-  { header: 'User ID', accessor: 'userId', sortable: true },
-  { header: 'Total', accessor: 'total', sortable: true, },
-  { header: 'Discounted Total', accessor: 'discountedTotal', sortable: true },
-  {
-    header: 'No. of Products',
-    accessor: 'totalProducts',
-    sortable: true,
-    render: (row) => (
-      <span
-        style={{
-          color: row.totalProducts % 2 === 0 ? 'green' : 'red',
-          fontWeight: 'bold'
-        }}
-      >
-        {row.totalProducts}
-      </span>
-    ),
-  },
-  {
-    header: 'Total Quantity',
-    accessor: 'quantity',
-    sortable: true,
-    render: (row) => {
-      return (
+  const columns = [
+    { header: 'ID', accessor: 'id', sortable: !isLoading },
+    { header: 'User ID', accessor: 'userId', sortable: !isLoading },
+    { header: 'Total', accessor: 'total', sortable: !isLoading },
+    { header: 'Discounted Total', accessor: 'discountedTotal', sortable: !isLoading },
+    {
+      header: 'No. of Products',
+      accessor: 'totalProducts',
+      sortable: !isLoading,
+      render: (row) => (
+        <span
+          style={{
+            color: row.totalProducts % 2 === 0 ? 'green' : 'red',
+            fontWeight: 'bold'
+          }}
+        >
+          {row.totalProducts}
+        </span>
+      ),
+    },
+    {
+      header: 'Total Quantity',
+      accessor: 'quantity',
+      sortable: !isLoading,
+      render: (row) => (
         <span
           style={{
             color: row.totalQuantity % 2 === 0 ? 'green' : 'red',
@@ -87,32 +89,24 @@ useEffect(() => {
         >
           {row.totalQuantity}
         </span>
-      );
-    }
-  },
-  // {
-  //   header:'Quantity',
-  //   accessor:'quantity',
-  //   sortable:'true'
-  // },
-  {
-    header:'Action',
-    accessor:'action',
+      )
+    },
+    {
+      header: 'Action',
+      accessor: 'action',
       render: (row) => (
-        <button className='edit-icon'
-         onClick={() =>{
-          setSelectedUser(row);
-          setShowViewModal(true);
-         }}
+        <button
+          className='action-icon edit-icon'
+          onClick={() => {
+            setSelectedUser(row);
+            setShowViewModal(true);
+          }}
         >
-         <i className="bi bi-pencil-square"></i>
+          <i className="bi bi-pencil-square"></i>
         </button>
       )
-  },
-  
-];
-
-
+    }
+  ];
 
   return (
     <div>
@@ -132,17 +126,21 @@ useEffect(() => {
           enablePageSize={showPageSize}
           enableItemCount={showItemCount}
           placeholder='Search by User ID...'
+
+          currentPage={currentPage || 1}
+          onPageChange={setCurrentPage}
+          pageSize={pageSize || 10}
+          onPageSizeChange={setPageSize}
         />
       </Card>
-       <EditModal
-          isOpen={showViewModal}
-           onClose={() => {setShowViewModal(false)}}
-           title='Transaction Details'
-           data={selectedUser}
-          //  exculudeFields={['', 'created_at']}
-          footerShow ={true}
-        />
-     
+
+      <EditModal
+        isOpen={showViewModal}
+        onClose={() => { setShowViewModal(false) }}
+        title='Transaction Details'
+        data={selectedUser}
+        footerShow={true}
+      />
     </div>
   );
 };

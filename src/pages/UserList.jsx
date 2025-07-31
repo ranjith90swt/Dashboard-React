@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import CommonTable from '../components/CommonTable';
-import ViewModal from '../components/ViewModal';
 import CommonModal from '../components/CommonModal';
 import InputField from '../components/InputField';
 import SelectField from '../components/SelectField';
 import Button from '../components/Button';
+import useFetch from '../hooks/useFetch';
+import { toast, ToastContainer } from 'react-toastify';
 
 const UserList = (
   {
@@ -37,21 +38,33 @@ const UserList = (
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [editModal, setEditModal] = useState(false);
 
+   const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
   
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetch('http://localhost:3001/users')
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('API error:', error);
-        setIsLoading(false);
-      });
-  }, []);
+  const {data, loading, error} = useFetch('http://localhost:3001/users');
+
+  useEffect(()=>{
+    if(data){
+      setUsers(data)
+      setIsLoading(false)
+    }
+  }, [data])
+  console.log(`users list : ${users}`)
+  
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetch('http://localhost:3001/users')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUsers(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error('API error:', error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   
   const filteredList = users.filter(item =>
@@ -172,8 +185,12 @@ const handleSaveUser = async (e) => {
       setNewUser({ name: '', email: '', role: '' });
       setSelectedUser(null);
       setEditModal(false);
+      toast.success("Updated..", { toastId: 'user-update-success' });
+
     } catch (error) {
-      setShowErrMsg('Error updating user: ' + error.message);
+      // setShowErrMsg('Error updating user: ' + error.message);
+          toast.error('Error updating user: ' + error.message);
+
     }
   }
 
@@ -206,8 +223,11 @@ const handleSaveUser = async (e) => {
         // Reset form and close modal
         setNewUser({ name: '', email: '', role: '' });
         setShowAddModal(false);
+        toast.success("New user added..", { toastId: 'user-add-success' });
+
       } catch (error) {
-        setShowErrMsg('Error adding user: ' + error.message);
+        //setShowErrMsg('Error adding user: ' + error.message);
+        toast.error('Error adding user: ' + error.message);
       }
     };
 
@@ -233,6 +253,7 @@ const handleSaveUser = async (e) => {
       setUsers(prev => prev.filter(user => user.id !== selectedUser.id));
       setConfirmDelete(false);
       setSelectedUser(null);
+      toast.success("User deleted..", { toastId: 'user-delete-success' });
       
     } catch (error) {
         console.log(`Delete Error ${error}`)
@@ -242,6 +263,7 @@ const handleSaveUser = async (e) => {
 
   return (
     <>
+    
       <div className="d-flex justify-content-between align-items-center">
            {
               showPageTitle && (
@@ -283,6 +305,11 @@ const handleSaveUser = async (e) => {
           enablePageSize={showPageSize} 
           enableItemCount = {showItemCount}
           placeholder='Search by name..'
+
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          pageSize={pageSize}
+          onPageSizeChange={setPageSize}
         />
 
         <CommonModal 

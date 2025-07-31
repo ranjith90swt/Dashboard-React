@@ -17,7 +17,7 @@ const TopNavbar = () => {
 
 
   return (
-    <div className="top-navbar d-flex justify-content-end">
+    <div className="top-navbar sticky-top d-flex justify-content-end">
       <button className="mode-btn" onClick={toggleTheme}>
         <i className={`bi ${theme === 'light' ? 'bi-moon-fill' : 'bi-sun-fill'}`}></i>
         {/* {theme === 'light' ? 'Dark' : 'Light'}  */}
