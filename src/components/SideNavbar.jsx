@@ -24,7 +24,7 @@ const SideNavbar = () => {
   const [userData, setUserData] = useState({});
 
    const handleLogout = () => {
-    
+      sessionStorage.clear(); // or removeItem("token") / removeItem("user")
     navigate('/');
   };
   useEffect(() => {

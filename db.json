@@ -1,11 +1,12 @@
 {
   "users": [
+    
     {
       "id": "u002",
       "name": "Bob Corp",
       "email": "bob@bobcorp.com",
       "password": "$2b$10$ZzXvMI7ReoM8wT3yDhhdU.T3bVR5Rwvx2UGOUXZwAoxzFBxRYXqfK",
-      "role": "analyst",
+      "role": "user",
       "status": "active",
       "created_at": "2025-07-11T09:15:00Z"
     },
@@ -14,7 +15,7 @@
       "name": "Admin User",
       "email": "admin@payouts.com",
       "password": "$2b$10$UpPyICo7vqO5VKMwTqY7w.2e6gk5LxUtgNczIj23P3QvIR6W8pVuO",
-      "role": "analyst",
+      "role": "admin",
       "status": "active",
       "created_at": "2025-07-01T12:30:00Z"
     },
@@ -180,6 +181,15 @@
       "email": "labs@gmail.com",
       "role": "analyst",
       "status": "active"
+    },
+    {
+      "id": "1",
+      "name": "Ranjith",
+      "email": "test@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "active",
+      "created_at": "2025-07-11T09:15:00Z"
     }
   ]
 }

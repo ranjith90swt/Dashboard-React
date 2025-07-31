@@ -67,9 +67,14 @@ const UserList = (
   // }, []);
 
   
+  // const filteredList = users.filter(item =>
+  //   item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
   const filteredList = users.filter(item =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  (item.name || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   
   const displayUserList = limit ? filteredList.slice(0, limit) : filteredList
 

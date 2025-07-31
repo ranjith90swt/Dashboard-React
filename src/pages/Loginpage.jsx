@@ -9,13 +9,12 @@ import Button from '../components/Button'
 const Loginpage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
-    const[phoneNumber,setPhoneNumber] = useState('')
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState({ username: '', password: '' });
 
-    const handleLogin = () => {
+    const handleLogin = async() => {
         if (!username || !password) {
             setErrors({
                 username: !username ? 'Username is required' : '',
@@ -24,27 +23,30 @@ const Loginpage = () => {
             return;
         }
 
-        const userData = JSON.parse(sessionStorage.getItem('user'));
+        try {
+            const response = await fetch(`http://localhost:3001/users`);
+            const users = await response.json();
 
-        if (userData) {
-            const { email,userName, phoneNumber, password: storedPassword } = userData;
+            const user = users.find((u) =>
+            (u.email === username || u.phoneNumber === username || u.name === username) &&
+            u.password === password
+            );
 
-            const isValidUser =
-                (username.trim() === email || username.trim() === phoneNumber || username.trim() === userName) &&
-                password.trim() === storedPassword ;
-
-            if (isValidUser) {
-                navigate('/dashboard');
+            if (user) {
+            // Save to session
+            sessionStorage.setItem('user', JSON.stringify(user));
+            navigate('/dashboard');
             } else {
-                setErrors({
-                    username: 'Invalid email/phone or password',
-                    password: 'Invalid password',
-                });
-            }
-        } else {
             setErrors({
-                username: 'User name is required',
-                password: 'Password is required',
+                username: 'Invalid email/phone/username or password',
+                password: 'Invalid password',
+            });
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setErrors({
+            username: 'Something went wrong. Please try again.',
+            password: '',
             });
         }
     };
@@ -54,11 +56,12 @@ const Loginpage = () => {
         const users = sessionStorage.getItem('user');
         if (users){
              const parsed = JSON.parse(users);
-        setUsername(parsed.phoneNumber || '');
+        setUsername(parsed.email || '');
         setPassword(parsed.password || '');
 
         }
-    })
+    }, [])
+
     return (
         <>
             <div className="main-bx pagebody d-flex justify-content-center align-items-center vh-100 "> 
@@ -124,10 +127,18 @@ const Loginpage = () => {
                                     
                                 </div>
                                 <span className="text-center">or</span>
+                               
+
+                                <p className='mt-2'>
+                                    <span className='small-text'>UserName : test@gmail.com</span> <br />
+                                   <span className='small-text'>Password : 123456</span> 
+
+                                </p>
+
                                 <div className="create-account">
                                     You don't have an account? 
                                     <NavLink
-                                        to='/signup' className='ms-2 account'
+                                        to='/signup' className='ms-2 account small-text text-white'
                                     >
                                         Create new
                                     </NavLink>
