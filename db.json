@@ -1,42 +1,6 @@
 {
   "users": [
     {
-      "id": "u002",
-      "name": "Bob Corp",
-      "email": "bob@bobcorp.com",
-      "password": "$2b$10$ZzXvMI7ReoM8wT3yDhhdU.T3bVR5Rwvx2UGOUXZwAoxzFBxRYXqfK",
-      "role": "analyst",
-      "status": "active",
-      "created_at": "2025-07-11T09:15:00Z"
-    },
-    {
-      "id": "u003",
-      "name": "Admin User",
-      "email": "admin@payouts.com",
-      "password": "$2b$10$UpPyICo7vqO5VKMwTqY7w.2e6gk5LxUtgNczIj23P3QvIR6W8pVuO",
-      "role": "analyst",
-      "status": "active",
-      "created_at": "2025-07-01T12:30:00Z"
-    },
-    {
-      "id": "u005",
-      "name": "Daniel Ledger",
-      "email": "daniel@ledgersync.com",
-      "password": "$2b$10$2Am1xd8Z7UtV2FzG5xpDveEpo2OZt6aPkKsKmkfeMprqZt9xvmG3O",
-      "role": "business",
-      "status": "active",
-      "created_at": "2025-07-02T10:00:00Z"
-    },
-    {
-      "id": "u006",
-      "name": "Ella Money",
-      "email": "ella@moneywise.org",
-      "password": "$2b$10$QkdfgwqkLW9pG5aUk7Ojpug0Mze3N/vtwZuLpWUYl3y8uV84PQl9O",
-      "role": "user",
-      "status": "active",
-      "created_at": "2025-07-03T08:45:00Z"
-    },
-    {
       "id": "u007",
       "name": "Frank Admin",
       "email": "frank@adminhub.io",
@@ -159,6 +123,115 @@
       "email": "ranjith@creativeeyetech.com",
       "role": "User",
       "status": "active"
+    },
+    {
+      "id": "a2d4",
+      "name": "Murali",
+      "email": "murali@gmail.com",
+      "role": "admin",
+      "status": "active"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "name": "Murali",
+      "userId": 101,
+      "total": 250.75,
+      "discountedTotal": 200.6,
+      "totalProducts": 3,
+      "totalQuantity": 5,
+      "status": "CURRENT"
+    },
+    {
+      "id": "2",
+      "name": "Ranjith Kumar",
+      "userId": 102,
+      "total": 150,
+      "discountedTotal": 140,
+      "totalProducts": 2,
+      "totalQuantity": 4,
+      "status": "CURRENT"
+    },
+    {
+      "id": "3",
+      "name": "Murali",
+      "userId": 103,
+      "total": 430.9,
+      "discountedTotal": 390,
+      "totalProducts": 5,
+      "totalQuantity": 8,
+      "status": "CURRENT"
+    },
+    {
+      "id": "4",
+      "name": "Bhanu",
+      "userId": 104,
+      "total": 120.5,
+      "discountedTotal": 100,
+      "totalProducts": 1,
+      "totalQuantity": 2,
+      "status": "CURRENT"
+    },
+    {
+      "id": "5",
+      "name": "Prasanna",
+      "userId": 105,
+      "total": 999.99,
+      "discountedTotal": 849.99,
+      "totalProducts": 6,
+      "totalQuantity": 10,
+      "status": "CURRENT"
+    },
+    {
+      "id": "6",
+      "name": "Ramya",
+      "userId": 101,
+      "total": 250.75,
+      "discountedTotal": 200.6,
+      "totalProducts": 3,
+      "totalQuantity": 5,
+      "status": "CURRENT"
+    },
+    {
+      "id": "7",
+      "name": "Bhanu",
+      "userId": 102,
+      "total": 150,
+      "discountedTotal": 140,
+      "totalProducts": 2,
+      "totalQuantity": 4,
+      "status": "CURRENTD"
+    },
+    {
+      "id": "8",
+      "name": "Dinesh",
+      "userId": 103,
+      "total": 430.9,
+      "discountedTotal": 390,
+      "totalProducts": 5,
+      "totalQuantity": 8,
+      "status": "CURRENTD"
+    },
+    {
+      "id": "9",
+      "name": "Suresh",
+      "userId": 104,
+      "total": 120.5,
+      "discountedTotal": 100,
+      "totalProducts": 1,
+      "totalQuantity": 2,
+      "status": "DELETED"
+    },
+    {
+      "id": "10",
+      "name": "Harish",
+      "userId": 105,
+      "total": 999.99,
+      "discountedTotal": 849.99,
+      "totalProducts": 6,
+      "totalQuantity": 10,
+      "status": "DELETED"
     }
   ]
 }
