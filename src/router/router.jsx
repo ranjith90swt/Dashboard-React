@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard';
 import Transactions from '../pages/Transactions'
 import Loginpage from '../pages/Loginpage';
 import Signup from '../pages/Signup';
+import PrivateRoute from './PrivateRouter';
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
    },
    {
       path: "/",
-      element: <App />,
+      element: <PrivateRoute> <App /> </PrivateRoute>, 
       children: [
 
          {

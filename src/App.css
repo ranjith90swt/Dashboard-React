@@ -22,9 +22,8 @@
   --fontsize: 14px;
   --activeColor : #2198EF;
 
-    --greenDark: #198754;
-
-
+  
+  --greenDark: #198754;
   --redDark: #DC3545;
 }
 
@@ -37,8 +36,6 @@
   --activeColor : #2198EF;
 
   --greenDark: #198754;
-
-
   --redDark: #DC3545;
 }
 
@@ -250,4 +247,18 @@ a{
 }
 .delete-icon i{
   font-size: 16px;
+}
+
+
+/** notify **/
+
+.Toastify__toast--success {
+  background-color: var(--primary-color) !important; /* Bootstrap green or any custom */
+  color: var(--light-gray) !important;
+}
+
+/* Custom error toast */
+.Toastify__toast--error {
+  background-color: #dc3545 !important;
+  color: #fff !important;
 }

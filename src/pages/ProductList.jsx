@@ -5,9 +5,9 @@ import Card from '../components/Card';
 const ProductList = (
   {
     limit = null,
-  showSearch = true,
-  showPagination = true,
-  showPageSize = true,
+    showSearch = true,
+    showPagination = true,
+    showPageSize = true,
     title = 'Product List',
     showItemCount = true,
     showPageTitle= true,
@@ -17,6 +17,9 @@ const ProductList = (
   const [list, setList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+
+   const [pageSize, setPageSize] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
@@ -82,6 +85,11 @@ const ProductList = (
           enableItemCount = {showItemCount}
 
           placeholder="Search by title.."
+
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          pageSize={pageSize}
+          onPageSizeChange={setPageSize}
         />
       </Card>
     </>

@@ -36,7 +36,7 @@ export const StatCard = (
         </h2>
         <hr />
         <p className='mb-0'>
-          <i class="bi bi-graph-up-arrow me-2"></i> 3% Last Month
+          <i className="bi bi-graph-up-arrow me-2"></i> 3% Last Month
         </p>
         
 

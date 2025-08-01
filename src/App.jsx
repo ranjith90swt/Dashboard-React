@@ -17,9 +17,11 @@ function App() {
         <div className="side-bar">
           <SideNavbar />
         </div>
-        <div className="main-bx">
+        <div className="main-bx px-0 pt-0">
           <TopNavbar />
-          <Outlet />
+          <div className="px-3">
+            <Outlet/>
+          </div>
         </div>
       </div>
        <ToastContainer 
@@ -32,7 +34,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        // theme="colored"
       />
     </>
   )
