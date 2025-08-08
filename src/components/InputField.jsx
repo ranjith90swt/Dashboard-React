@@ -16,7 +16,7 @@ const InputField = (
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`form-control mb-3 ${className}`}
+        className={`form-control mb-1 ${className}`}
         value={value}
         onChange={onChange} 
     />

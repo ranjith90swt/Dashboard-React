@@ -35,7 +35,14 @@ const Loginpage = () => {
             if (user) {
             // Save to session
             sessionStorage.setItem('user', JSON.stringify(user));
-            navigate('/dashboard');
+            localStorage.setItem('user', JSON.stringify(user));
+              if(user.role === 'admin'){
+                navigate('/dashboard');
+
+              }
+              else if(user.role === 'user'){
+                navigate('/user-dashboard');
+              }
             } else {
             setErrors({
                 username: 'Invalid email/phone/username or password',

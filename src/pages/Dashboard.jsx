@@ -10,7 +10,7 @@ import TransactionChart from '../components/TransactionChart'
 import StatusTrackingChart from '../components/StatusTrackingChart'
 const Dashboard = () => {
 
-  const stats = [
+const stats = [
   {
     title: "Total Users",
     value: 1240,

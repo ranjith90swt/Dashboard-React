@@ -12,6 +12,8 @@ export const StatCard = (
   bgclass='',
 //   color = 'primary',
   duration = 1.5, // animation duration in seconds
+  description ='',
+  descriptionIcon = ''
     }
 ) => {
   return (
@@ -30,14 +32,24 @@ export const StatCard = (
                 // prefix={prefix} 
                 suffix={suffix}
                 separator=","
+
               />
            </div>
           
         </h2>
         <hr />
-        <p className='mb-0'>
-          <i className="bi bi-graph-up-arrow me-2"></i> 3% Last Month
-        </p>
+        {
+          description && (
+            <>
+              <p className='mb-0'>
+                {descriptionIcon && <>{descriptionIcon}</>}
+                {description}
+              </p>
+            </>
+          )
+        }
+
+       
         
 
       </div>

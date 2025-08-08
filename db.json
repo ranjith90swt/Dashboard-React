@@ -1,15 +1,5 @@
 {
   "users": [
-    
-    {
-      "id": "u002",
-      "name": "Bob Corp",
-      "email": "bob@bobcorp.com",
-      "password": "$2b$10$ZzXvMI7ReoM8wT3yDhhdU.T3bVR5Rwvx2UGOUXZwAoxzFBxRYXqfK",
-      "role": "user",
-      "status": "active",
-      "created_at": "2025-07-11T09:15:00Z"
-    },
     {
       "id": "u003",
       "name": "Admin User",
@@ -190,6 +180,122 @@
       "role": "user",
       "status": "active",
       "created_at": "2025-07-11T09:15:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2025-07-11T09:15:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Kumar",
+      "email": "user@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "active",
+      "created_at": "2025-07-11T09:15:00Z"
+    }
+  ],
+  "beneficiaries": [
+    {
+      "id": "1",
+      "userId": 1,
+      "beneficiaryName": "Anita Sharma",
+      "accountNumber": "XXXXXXXX1234",
+      "bankName": "HDFC Bank",
+      "status": "approved"
+    },
+    {
+      "id": "2",
+      "userId": 3,
+      "beneficiaryName": "Kumar",
+      "accountNumber": "XXXXXXXX1235",
+      "bankName": "Canara Bank",
+      "status": "approved"
+    },
+    {
+      "id": "4135",
+      "userId": "3",
+      "beneficiaryName": "Test",
+      "bankName": "Test Bank",
+      "accountNumber": "12345",
+      "status": "Active"
+    },
+    {
+      "id": "78b0",
+      "userId": "3",
+      "beneficiaryName": "ert",
+      "bankName": "",
+      "accountNumber": "",
+      "status": "Active"
+    },
+    {
+      "id": "4b9c",
+      "userId": "3",
+      "beneficiaryName": "dsfs rrr",
+      "bankName": "cxdv 33",
+      "accountNumber": "",
+      "status": "Active"
+    },
+    {
+      "id": "a838",
+      "userId": "3",
+      "beneficiaryName": "Jhon",
+      "bankName": "Canara Bank",
+      "accountNumber": "123456",
+      "status": "Active"
+    },
+    {
+      "id": "22b4",
+      "userId": "3",
+      "beneficiaryName": "Test Test",
+      "bankName": "Test Bank",
+      "accountNumber": "12345678",
+      "status": "Active"
+    },
+    {
+      "id": "7cf9",
+      "userId": "3",
+      "beneficiaryName": "Test",
+      "bankName": "Canara Bank",
+      "accountNumber": "12345",
+      "status": "Active"
+    },
+    {
+      "id": "1e55",
+      "userId": "3",
+      "beneficiaryName": "Test",
+      "bankName": "Canara Bank",
+      "accountNumber": "12345",
+      "status": "Active"
+    },
+    {
+      "id": "5e51",
+      "userId": "3",
+      "beneficiaryName": "Test",
+      "bankName": "Canara Bank",
+      "accountNumber": "12345",
+      "status": "Active"
+    },
+    {
+      "id": "8bc0",
+      "userId": "1",
+      "beneficiaryName": "Murali",
+      "bankName": "Canara Bank",
+      "accountNumber": "12345",
+      "status": "Active"
+    },
+    {
+      "id": "3367",
+      "userId": "1",
+      "beneficiaryName": "Test Name",
+      "bankName": "Test Bank",
+      "accountNumber": "123456",
+      "status": "Active"
     }
   ]
 }
