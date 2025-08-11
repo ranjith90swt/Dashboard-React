@@ -11,7 +11,8 @@ const useFetch = (url) => {
     setLoading(true);
     setError(null);
 
-    fetch(url).then((res)=>{
+    fetch(url)
+    .then((res)=>{
         if(!res.ok){
          throw new Error(`Http error ${res.status}`)
         }

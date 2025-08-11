@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import {StatCard} from "../components/StatCard";
 import {FaIndianRupeeSign} from "react-icons/fa6";
+import CommonModal from "../components/CommonModal";
+import InputField from "../components/InputField";
+import SelectField from "../components/SelectField";
 
 const UserDashboard = () => {
+
+    const [isOpenModel, setIsOpenModal] = useState(false);
+
+    const handleOpenModal = () =>{
+        setIsOpenModal(true)
+    }
+    
+    const handleSendMoney = () =>{
+        
+    }
+
     const UserStats = [
         {
             title: "Account Balance",
@@ -10,13 +24,18 @@ const UserDashboard = () => {
             value: 1240,
             color: "primary",
             bgclass: "stat-bg1",
+            link:"",
+            buttonLabel:"",
         },
         {
             title: "Send Money",
-            value: 3240,
+            value: '',
             prefix: "$",
             color: "primary",
             bgclass: "stat-bg2",
+            link:"",
+            buttonLabel:"",
+            buttonOnClick: handleOpenModal
         },
         {
             title: "Total Transactions",
@@ -32,6 +51,8 @@ const UserDashboard = () => {
         },
     ];
 
+  
+
     return (
         <>
             <h2 className="page-title">User Dashboard</h2>
@@ -41,14 +62,43 @@ const UserDashboard = () => {
                     <div key={index} className="col-md-6 col-lg-3 col-sm-6">
                         <StatCard
                             title={stat.title}
+
                             value={stat.value}
+                            
                             prefix={stat.prefix}
                             color={stat.color}
                             bgclass={stat.bgclass}
+                            buttonOnClick= {stat.buttonOnClick}
                         />
                     </div>
                 ))}
             </div>
+
+            <CommonModal
+              id="sendMoney"
+              title="Send Money"
+              onClose={() => {
+                setIsOpenModal(false)
+
+              }}
+              isOpen={isOpenModel}
+            >
+            <SelectField 
+            className="mb-3"
+            id='selectBeneficiary'
+            placeholder="Select Beneficiary"
+            label=''
+            options={[
+                {value:"Bene 1", label:"Bene 1"},
+                {value:"Bene 1", label:"Bene 1"},
+                {value:"Bene 1", label:"Bene 1"}
+            ]}
+            >
+
+            </SelectField>
+            <InputField placeholder="Enter amout"/>
+
+            </CommonModal>
         </>
     );
 };

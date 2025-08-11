@@ -210,14 +210,6 @@
       "status": "approved"
     },
     {
-      "id": "2",
-      "userId": 3,
-      "beneficiaryName": "Kumar",
-      "accountNumber": "XXXXXXXX1235",
-      "bankName": "Canara Bank",
-      "status": "approved"
-    },
-    {
       "id": "4135",
       "userId": "3",
       "beneficiaryName": "Test",
@@ -226,59 +218,11 @@
       "status": "Active"
     },
     {
-      "id": "78b0",
-      "userId": "3",
-      "beneficiaryName": "ert",
-      "bankName": "",
-      "accountNumber": "",
-      "status": "Active"
-    },
-    {
-      "id": "4b9c",
-      "userId": "3",
-      "beneficiaryName": "dsfs rrr",
-      "bankName": "cxdv 33",
-      "accountNumber": "",
-      "status": "Active"
-    },
-    {
       "id": "a838",
       "userId": "3",
       "beneficiaryName": "Jhon",
       "bankName": "Canara Bank",
       "accountNumber": "123456",
-      "status": "Active"
-    },
-    {
-      "id": "22b4",
-      "userId": "3",
-      "beneficiaryName": "Test Test",
-      "bankName": "Test Bank",
-      "accountNumber": "12345678",
-      "status": "Active"
-    },
-    {
-      "id": "7cf9",
-      "userId": "3",
-      "beneficiaryName": "Test",
-      "bankName": "Canara Bank",
-      "accountNumber": "12345",
-      "status": "Active"
-    },
-    {
-      "id": "1e55",
-      "userId": "3",
-      "beneficiaryName": "Test",
-      "bankName": "Canara Bank",
-      "accountNumber": "12345",
-      "status": "Active"
-    },
-    {
-      "id": "5e51",
-      "userId": "3",
-      "beneficiaryName": "Test",
-      "bankName": "Canara Bank",
-      "accountNumber": "12345",
       "status": "Active"
     },
     {
@@ -295,6 +239,30 @@
       "beneficiaryName": "Test Name",
       "bankName": "Test Bank",
       "accountNumber": "123456",
+      "status": "Active"
+    },
+    {
+      "id": "bf40",
+      "userId": "3",
+      "beneficiaryName": "Sudha",
+      "bankName": "State Bank",
+      "accountNumber": "1234567",
+      "status": "Active"
+    },
+    {
+      "id": "51a4",
+      "userId": "3",
+      "beneficiaryName": "Test",
+      "bankName": "Canara Bank",
+      "accountNumber": "1234",
+      "status": "Active"
+    },
+    {
+      "id": "cdd4",
+      "userId": "3",
+      "beneficiaryName": "Murali",
+      "bankName": "Canara Bank",
+      "accountNumber": "23432465",
       "status": "Active"
     }
   ]

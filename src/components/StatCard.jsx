@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/StatCard.css'
 import CountUp from 'react-countup'
+import Button from './Button';
 
 export const StatCard = (
     {
@@ -13,9 +14,14 @@ export const StatCard = (
 //   color = 'primary',
   duration = 1.5, // animation duration in seconds
   description ='',
-  descriptionIcon = ''
+  descriptionIcon = '',
+  link = '',
+  buttonLabel = 'Send Money',
+  buttonOnClick = ''
     }
 ) => {
+
+  const isValueEmpty = value == null || value === '';
   return (
     <>
       <div className={`stat-bx ${bgclass}`}>
@@ -25,15 +31,27 @@ export const StatCard = (
         <h2 className='state-numbers'> 
 
            <div className="d-flex">
-              <span className="prefix me-2">{prefix}</span> 
-              <CountUp className='state-numbers'
-                end={value}
-                duration={duration}
-                // prefix={prefix} 
-                suffix={suffix}
-                separator=","
+            {
+              isValueEmpty ? (
 
-              />
+              <Button onClick={buttonOnClick} label={buttonLabel} className='' size='lg'> {buttonLabel} </Button>
+              ):(
+
+              <>
+                 <span className="prefix me-2">{prefix}</span> 
+                <CountUp className='state-numbers'
+                  end={value}
+                  duration={duration}
+                  // prefix={prefix} 
+                  suffix={suffix}
+                  separator=","
+
+                />
+                </>
+
+              )
+            }
+              
            </div>
           
         </h2>

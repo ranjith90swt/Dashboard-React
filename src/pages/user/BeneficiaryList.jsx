@@ -10,13 +10,16 @@ import { toast } from "react-toastify";
 
 const BeneficiaryList = () => {
     const [addModal, setAddModal] = useState(false);
-     const [errors, setErrors] = useState({});
-
+    const [errors, setErrors] = useState({});
+    const [deleteModal, setDeleteModal] = useState(false);
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user?.id;
     const {data, loading, error, refetch} = useFetch(`http://localhost:3001/beneficiaries?userId=${userId}`);
     console.log(data);
     console.log("Error", error);
+   
+    const [selectedBeneficiary, setSelectedBeneficiary] = useState();
+
 
     const columns = [
         {header: "ID", accessor: "id", sortable: true},
@@ -24,13 +27,25 @@ const BeneficiaryList = () => {
         {header: "Account Number", accessor: "accountNumber", sortable: true},
         {header: "Bank Name", accessor: "bankName", sortable: true},
         {header: "Status", accessor: "status", sortable: true},
+        {header: "Action", accessor: "action",
+            render: (row) =>{
+                return(
+                    <>
+                        <button className='action-icon delete-icon' onClick={() => {
+                            setSelectedBeneficiary(row)
+                            setDeleteModal(true)
+                        }}> Delete </button>
+                    </>
+                )
+            }
+        }
     ];
 
     const handleAddModal = () => {
         setAddModal(true);
     };
 
-     const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         userId: userId,
         beneficiaryName:'',
         bankName:'',
@@ -57,7 +72,7 @@ const BeneficiaryList = () => {
     }
 
     // add beneficiary 
-   const handleSubmit = async() =>{
+    const handleSubmit = async() =>{
         try {
 
             //validation 
@@ -132,6 +147,42 @@ const BeneficiaryList = () => {
         }
     }
 
+    //delete beneficiary
+    const handleDelete = async () => {
+        try {
+            const deleteRes = await fetch(`http://localhost:3001/beneficiaries/${selectedBeneficiary.id}`, {
+                method: 'DELETE'
+            })
+
+            if(!deleteRes.ok){
+                throw new Error , 'Failed to delete'
+            }
+
+            console.log(`deleted ${deleteRes}`)
+          
+            toast.success('Beneficiary Deleted');
+         
+            setDeleteModal(false);
+            setSelectedBeneficiary(null);
+            refetch();
+     
+            
+
+
+        } catch (error) {    
+            console.error(error);
+            toast.error('Error deleting beneficiary');
+
+            
+        }
+
+    }
+
+
+
+
+
+
     return (
         <>
             <div className="d-flex justify-content-between align-items-center mb-2">
@@ -194,6 +245,40 @@ const BeneficiaryList = () => {
 
 
 
+
+            </CommonModal>
+
+            <CommonModal
+              id="deleteBeneficiary"
+              title="Confirm Delete Beneficiary"
+              isOpen={deleteModal}
+              onClose={() => setDeleteModal(false)}
+
+              footer={
+                <>
+                <Button 
+                  onClick={() => setDeleteModal(false)}
+
+                  variant='secondary'
+                  size='md'
+                  label='Cancel'
+                />
+                <Button 
+                  onClick={handleDelete}
+                  variant='danger'
+                  size='md'
+                  label='Delete'
+                >
+
+                </Button>
+                
+                </>
+              }
+            >
+
+                <p>
+                    Are you sure you want to delete <strong>{selectedBeneficiary?.beneficiaryName}</strong>
+                </p>
 
             </CommonModal>
         </>
