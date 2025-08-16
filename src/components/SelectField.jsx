@@ -1,6 +1,6 @@
 // SelectField.jsx
-import React from 'react';
-import '../css/SelectField.css'
+import React from "react";
+import "../css/SelectField.css";
 
 const SelectField = ({
   id,
@@ -9,8 +9,8 @@ const SelectField = ({
   value,
   onChange,
   options = [],
-  placeholder = 'Select an option',
-  className = '',
+  placeholder = "Select an option",
+  className = "",
 }) => {
   return (
     <div className={`form-group ${className}`}>
@@ -22,10 +22,16 @@ const SelectField = ({
         onChange={onChange}
         className="form-select"
       >
-        <option value="" disabled>{placeholder}</option>
-        {options.map((opt) => (
+        <option value="">{placeholder}</option>
+        {/* {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
+          </option>
+        ))} */}
+
+        {options.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.label}
           </option>
         ))}
       </select>
